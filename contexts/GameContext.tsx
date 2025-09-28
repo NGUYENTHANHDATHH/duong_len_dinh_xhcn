@@ -32,9 +32,23 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
     };
 
+    const handleScoreUpdate = ({ playerId, newScore }: { playerId: string, newScore: number }) => {
+      setGameState(prevState => {
+        if (!prevState) return null;
+        return {
+          ...prevState,
+          players: prevState.players.map(p =>
+            p.id === playerId ? { ...p, score: newScore } : p
+          )
+        };
+      });
+    };
+
     try {
       socketService.on('init', handleInit);
       socketService.on('gameStateUpdate', handleStateUpdate);
+      socketService.on('scoreUpdated', handleScoreUpdate);
+
       // Play bell sound when any player buzzes
       const handleBuzzed = () => {
         try {
@@ -57,6 +71,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     return () => {
       socketService.off('init', handleInit);
       socketService.off('gameStateUpdate', handleStateUpdate);
+      socketService.off('scoreUpdated', handleScoreUpdate);
       socketService.off('buzzed');
     };
   }, []);

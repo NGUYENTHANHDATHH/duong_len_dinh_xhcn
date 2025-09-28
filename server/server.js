@@ -1,3 +1,4 @@
+
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
@@ -29,7 +30,8 @@ const io = new Server(server, {
   cors: {
     origin: "*", // Allow all origins for development
     methods: ["GET", "POST"]
-  }
+  },
+  transports: ['websocket', 'polling']
 });
 
 // --- Game State Management ---
@@ -76,10 +78,18 @@ function loadState() {
 
 function saveState() {
   try {
-    // Only persist players and game started status for simplicity
+    // Persist key parts of the game state
     const persistentState = {
       players: gameState.players,
       isGameStarted: gameState.isGameStarted,
+      currentRound: gameState.currentRound,
+      currentEasyQuestion: gameState.currentEasyQuestion,
+      currentHardQuestion: gameState.currentHardQuestion,
+      revealedClues: gameState.revealedClues,
+      revealedAnswers: gameState.revealedAnswers,
+      showSpeedUpAnswers: gameState.showSpeedUpAnswers,
+      activePlayerId: gameState.activePlayerId,
+      finishQuestionType: gameState.finishQuestionType,
     };
     fs.writeFile(DB_PATH, JSON.stringify(persistentState, null, 2), (err) => {
       if (err) console.error("Error saving state:", err);
@@ -217,6 +227,11 @@ io.on('connection', (socket) => {
       const newIndex = gameState.currentEasyQuestion + (direction === 'next' ? 1 : -1);
       if (newIndex >= 0 && newIndex < videoCount) {
         gameState.currentEasyQuestion = newIndex;
+        // Reset state for the new Speed Up question
+        gameState.showSpeedUpAnswers = false;
+        gameState.players.forEach(p => {
+          p.speedUpAnswer = '';
+        });
       }
       broadcastState();
     } catch (e) { console.error('navigateTangTocVideo Error:', e); }
@@ -259,13 +274,32 @@ io.on('connection', (socket) => {
     } catch (e) { console.error('revealAnswers Error:', e); }
   });
 
+  socket.on('showObstacle', () => {
+    try {
+      if (gameState.currentRound === ROUNDS.OBSTACLE) {
+        gameState.currentEasyQuestion = 0; // Move from intro (-1) to main content (0)
+        broadcastState();
+      }
+    } catch (e) { console.error('showObstacle Error:', e); }
+  });
+
+  socket.on('hideObstacle', () => {
+    try {
+      if (gameState.currentRound === ROUNDS.OBSTACLE) {
+        gameState.currentEasyQuestion = -1; // Move back to intro state
+        broadcastState();
+      }
+    } catch (e) { console.error('hideObstacle Error:', e); }
+  });
+
   socket.on('updateScore', ({ playerId, delta }) => {
     try {
       const player = gameState.players.find(p => p.id === playerId);
       if (player) {
         player.score += delta;
         saveState();
-        broadcastState();
+        // Instead of broadcasting the whole state, emit a specific event
+        io.emit('scoreUpdated', { playerId, newScore: player.score });
       }
     } catch (e) { console.error('updateScore Error:', e); }
   });

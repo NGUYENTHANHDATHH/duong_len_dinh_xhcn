@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useGame } from '../contexts/GameContext';
 import { Player, Round } from '../types';
@@ -40,12 +41,12 @@ const AdminDashboard: React.FC = () => {
         <button onClick={() => handleScoreChange(player.id, -20)} className="bg-yellow-500 px-2 py-1 rounded hover:bg-yellow-400 text-sm">-20</button>
       </div>
       <div className="flex items-center space-x-2">
-         <button onClick={() => socket.setActivePlayer(player.id)} className={`px-2 py-1 rounded text-sm ${gameState.activePlayerId === player.id ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-400'}`}>Set Active</button>
-         <button 
-            onClick={() => { try { socket.toggleStarOfHope(player.id) } catch(e) { console.error("Failed to toggle star", e) }}}
-            className={`px-2 py-1 rounded text-sm transition-colors ${player.hasStarOfHope ? 'bg-yellow-400 text-black' : 'bg-gray-500 hover:bg-gray-400'}`}
+        <button onClick={() => socket.setActivePlayer(player.id)} className={`px-2 py-1 rounded text-sm ${gameState.activePlayerId === player.id ? 'bg-blue-500' : 'bg-gray-500 hover:bg-gray-400'}`}>Set Active</button>
+        <button
+          onClick={() => { try { socket.toggleStarOfHope(player.id) } catch (e) { console.error("Failed to toggle star", e) } }}
+          className={`px-2 py-1 rounded text-sm transition-colors ${player.hasStarOfHope ? 'bg-yellow-400 text-black' : 'bg-gray-500 hover:bg-gray-400'}`}
         >
-            🌟 Star
+          🌟 Star
         </button>
         <button onClick={() => handleKickPlayer(player.id)} className="bg-red-600 px-2 py-1 rounded hover:bg-red-500 text-sm">Kick</button>
       </div>
@@ -56,7 +57,7 @@ const AdminDashboard: React.FC = () => {
     <div className="p-4 md:p-6 bg-gray-800 min-h-screen">
       <h1 className="text-3xl font-bold mb-4 text-yellow-400">Admin Dashboard</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
+
         {/* Game State & Controls */}
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
@@ -75,7 +76,7 @@ const AdminDashboard: React.FC = () => {
                 <button key={round} onClick={() => socket.switchRound(round)} className={`${ROUND_COLORS[round]} px-4 py-2 rounded-md font-semibold hover:opacity-80`}>{round}</button>
               ))}
             </div>
-             <p className="mt-4 text-lg">Current Round: <span className="font-bold text-yellow-300">{gameState.currentRound}</span></p>
+            <p className="mt-4 text-lg">Current Round: <span className="font-bold text-yellow-300">{gameState.currentRound}</span></p>
           </div>
 
           <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
@@ -85,8 +86,8 @@ const AdminDashboard: React.FC = () => {
             </div>
             <p className="mt-4 text-2xl font-mono">Time Left: {gameState.timer}s</p>
           </div>
-          
-          {(gameState.currentRound === Round.WARM_UP || gameState.currentRound === Round.OBSTACLE || gameState.currentRound === Round.FINISH || gameState.currentRound === Round.SPEED_UP) && 
+
+          {(gameState.currentRound === Round.WARM_UP || gameState.currentRound === Round.OBSTACLE || gameState.currentRound === Round.FINISH || gameState.currentRound === Round.SPEED_UP) &&
             <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
               <h2 className="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Round-Specific Controls</h2>
               {gameState.currentRound === Round.WARM_UP && (
@@ -100,21 +101,37 @@ const AdminDashboard: React.FC = () => {
               )}
               {gameState.currentRound === Round.OBSTACLE && (
                 <div>
-                  <h3 className="font-semibold mb-2">Reveal Obstacle Clues & Answers</h3>
+                  <h3 className="font-semibold mb-2">"Chướng ngại vật" Controls</h3>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <button
+                      onClick={() => socket.showObstacle()}
+                      disabled={gameState.currentEasyQuestion !== -1}
+                      className="bg-indigo-600 hover:bg-indigo-500 px-3 py-1 rounded-md font-semibold disabled:bg-gray-500"
+                    >
+                      Show Obstacle
+                    </button>
+                    <button
+                      onClick={() => socket.hideObstacle()}
+                      disabled={gameState.currentEasyQuestion === -1}
+                      className="bg-pink-600 hover:bg-pink-500 px-3 py-1 rounded-md font-semibold disabled:bg-gray-500"
+                    >
+                      Hide Obstacle
+                    </button>
+                  </div>
                   <div className="space-y-2">
                     {[0, 1, 2, 3].map(i => (
                       <div key={i} className="flex gap-2 items-center">
                         <span className="font-bold w-16">Clue {i + 1}:</span>
-                        <button 
-                          onClick={() => socket.revealClue(i)} 
-                          disabled={gameState.revealedClues[i]} 
+                        <button
+                          onClick={() => socket.revealClue(i)}
+                          disabled={gameState.revealedClues[i]}
                           className="bg-cyan-600 hover:bg-cyan-500 px-3 py-1 rounded-md font-semibold disabled:bg-gray-500"
                         >
                           Reveal Clue
                         </button>
-                        <button 
-                          onClick={() => socket.revealAnswer(i)} 
-                          disabled={gameState.revealedAnswers[i]} 
+                        <button
+                          onClick={() => socket.revealAnswer(i)}
+                          disabled={gameState.revealedAnswers[i]}
                           className="bg-teal-600 hover:bg-teal-500 px-3 py-1 rounded-md font-semibold disabled:bg-gray-500"
                         >
                           Reveal Answer
@@ -140,7 +157,7 @@ const AdminDashboard: React.FC = () => {
                     <button onClick={() => socket.navigateQuestion('easy', 'prev')} className="bg-gray-500 hover:bg-gray-400 px-3 py-1 rounded">Prev Easy</button>
                     <button onClick={() => socket.navigateQuestion('easy', 'next')} className="bg-green-500 hover:bg-green-400 px-3 py-1 rounded">Next Easy</button>
                   </div>
-                   <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <button onClick={() => socket.navigateQuestion('hard', 'prev')} className="bg-gray-500 hover:bg-gray-400 px-3 py-1 rounded">Prev Hard</button>
                     <button onClick={() => socket.navigateQuestion('hard', 'next')} className="bg-red-500 hover:bg-red-400 px-3 py-1 rounded">Next Hard</button>
                   </div>
@@ -152,21 +169,21 @@ const AdminDashboard: React.FC = () => {
 
         {/* Player List & Management */}
         <div className="lg:col-span-1 space-y-4">
-            <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
-              <h2 className="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Players ({gameState.players.length})</h2>
-              <div className="space-y-3 max-h-96 overflow-y-auto">
-                {gameState.players.map(p => <PlayerControls key={p.id} player={p} />)}
-              </div>
+          <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Players ({gameState.players.length})</h2>
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {gameState.players.map(p => <PlayerControls key={p.id} player={p} />)}
             </div>
-            <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
-                <h2 className="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Buzzer Queue</h2>
-                <ul className="list-decimal list-inside">
-                    {gameState.buzzerQueue.map((playerId, index) => {
-                        const player = gameState.players.find(p => p.id === playerId);
-                        return <li key={playerId} className="text-lg">{index + 1}. {player?.name || 'Unknown'}</li>;
-                    })}
-                </ul>
-            </div>
+          </div>
+          <div className="bg-gray-700 p-4 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Buzzer Queue</h2>
+            <ul className="list-decimal list-inside">
+              {gameState.buzzerQueue.map((playerId, index) => {
+                const player = gameState.players.find(p => p.id === playerId);
+                return <li key={playerId} className="text-lg">{index + 1}. {player?.name || 'Unknown'}</li>;
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

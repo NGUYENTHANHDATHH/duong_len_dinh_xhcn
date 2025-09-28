@@ -1,3 +1,4 @@
+
 import { io, Socket } from 'socket.io-client';
 import { Round } from '../types';
 
@@ -5,8 +6,10 @@ class SocketService {
   private socket: Socket;
 
   constructor() {
-    // Explicitly connect to the backend server running on port 3001
-    this.socket = io('http://localhost:3001');
+    // Explicitly connect to the backend server, defining transports
+    this.socket = io('http://localhost:3001', {
+      transports: ['websocket', 'polling'],
+    });
 
     this.socket.on('connect_error', (err) => {
       console.error("Socket connection error:", err.message);
@@ -21,11 +24,11 @@ class SocketService {
 
   // Method to remove listeners to prevent memory leaks
   off(eventName: string, callback?: (data: any) => void) {
-      if (callback) {
-          this.socket.off(eventName, callback);
-      } else {
-          this.socket.off(eventName);
-      }
+    if (callback) {
+      this.socket.off(eventName, callback);
+    } else {
+      this.socket.off(eventName);
+    }
   }
 
   // --- Emitters to the server ---
@@ -57,6 +60,8 @@ class SocketService {
   revealClue(index: number) { this.socket.emit('revealClue', { index }); }
   revealAnswer(index: number) { this.socket.emit('revealAnswer', { index }); }
   revealAnswers() { this.socket.emit('revealAnswers'); }
+  showObstacle() { this.socket.emit('showObstacle'); }
+  hideObstacle() { this.socket.emit('hideObstacle'); }
   updateScore(playerId: string, delta: number) { this.socket.emit('updateScore', { playerId, delta }); }
   setActivePlayer(playerId: string) { this.socket.emit('setActivePlayer', { playerId }); }
   kickPlayer(playerId: string) { this.socket.emit('kickPlayer', { playerId }); }

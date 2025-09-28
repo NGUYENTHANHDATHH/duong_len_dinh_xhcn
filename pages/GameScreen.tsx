@@ -1,9 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGame } from '../contexts/GameContext';
 import { Player, Round, GameState, QuestionData } from '../types';
 import { ROUND_COLORS, ROUND_BORDER_COLORS } from '../constants';
-import { url } from 'inspector';
 
 interface GameScreenProps {
   isPlayerView: boolean;
@@ -49,31 +49,35 @@ const RoundDisplay: React.FC<{
 }> = React.memo(({ currentRound, gameState, questions }) => {
 
   const IntroScreen = () => {
-    if (currentRound === Round.WARM_UP) {
+    const videoMap: Partial<{ [key in Round]: { src: string, title: string } }> = {
+      [Round.WARM_UP]: { src: "/assets/videos/khoi_dong.mp4", title: "Intro phần thi Khởi động" },
+      [Round.OBSTACLE]: { src: "/assets/videos/vuot_chuong_ngai_vat.mp4", title: "Intro phần thi Vượt chướng ngại vật" },
+      [Round.SPEED_UP]: { src: "/assets/videos/tang_toc.mp4", title: "Intro phần thi Tăng tốc" },
+      [Round.FINISH]: { src: "/assets/videos/ve_dich.mp4", title: "Intro phần thi Về đích" },
+    };
+
+    const video = videoMap[currentRound];
+
+    if (video) {
       return (
-        <iframe width="853" height="480" src="../assets/videos/khoi_dong.mp4" title=" Intro phần thi Khởi động" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      )
+        <div className="relative w-full max-w-4xl" style={{ paddingBottom: '56.25%' /* 16:9 Aspect Ratio */ }}>
+          <iframe
+            src={video.src}
+            title={video.title}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute top-0 left-0 w-full h-full rounded-lg"
+          ></iframe>
+        </div>
+      );
     }
-    if (currentRound === Round.OBSTACLE) {
-      return (
-        <iframe width="853" height="480" src="../assets/videos/khoi_dong.mp4" title=" Intro phần thi Khởi động" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      )
-    }
-    if (currentRound === Round.SPEED_UP) {
-      return (
-        <iframe width="853" height="480" src="../assets/videos/tang_toc.mp4" title=" Intro phần thi Tăng tốc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      )
-    }
-    if (currentRound === Round.FINISH) {
-      return (
-        <iframe width="853" height="480" src="../assets/videos/ve_dich.mp4" title=" Intro phần thi Về đích" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      )
-    }
+    return null;
   };
 
   const isIntro =
     (currentRound === Round.WARM_UP && gameState.currentEasyQuestion === -1) ||
-    (currentRound === Round.OBSTACLE && gameState.revealedClues.every(c => !c)) ||
+    (currentRound === Round.OBSTACLE && gameState.currentEasyQuestion === -1) ||
     (currentRound === Round.SPEED_UP && gameState.currentEasyQuestion === -1) ||
     (currentRound === Round.FINISH && gameState.currentEasyQuestion === -1 && gameState.currentHardQuestion === -1);
 
@@ -102,7 +106,7 @@ const RoundDisplay: React.FC<{
         <div className="text-center">
           <h2 className="text-4xl font-bold mb-4 uppercase">Keyword has {data.keyword.length} letters</h2>
           <div className="relative mb-4">
-            <img src="../assets/imgs/obstacle.jpg" alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
+            <img src={data.img} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
             {data.clues.map((clue, index) => (
@@ -188,6 +192,13 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
     }
   }, [id, isPlayerView, navigate, gameState]);
 
+  // Clear local answer input when the Speed Up question changes
+  useEffect(() => {
+    if (gameState?.currentRound === Round.SPEED_UP) {
+      setSpeedUpAnswer('');
+    }
+  }, [gameState?.currentEasyQuestion, gameState?.currentRound]);
+
   if (!gameState || !questions) {
     return <div className="flex items-center justify-center min-h-screen text-2xl">Connecting to the game...</div>;
   }
@@ -219,7 +230,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('../assets/imgs/bg_sys.png')" }}>
+    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/imgs/bg_sys.png')" }}>
       {/* Main Content */}
       <main className="flex-1 p-4 md:p-8 flex flex-col " >
         <header className={`p-4 rounded-t-xl text-center ${ROUND_COLORS[currentRound]}`}>

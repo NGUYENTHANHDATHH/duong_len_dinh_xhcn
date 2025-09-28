@@ -30,7 +30,6 @@ export interface GameState {
   // Obstacle round state
   revealedClues: boolean[]; // For Obstacle round
   revealedAnswers: boolean[]; // For Obstacle round answers
-  isObstacleVisible: boolean;
 
   // Speed Up round state
   showSpeedUpAnswers: boolean;
