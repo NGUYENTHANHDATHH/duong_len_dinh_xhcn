@@ -29,6 +29,16 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
+  const handleEndGame = () => {
+    if (window.confirm("Are you sure you want to end the game and reset all scores? This cannot be undone.")) {
+      try {
+        socket.endGame();
+      } catch (e) {
+        console.error("Failed to end game", e);
+      }
+    }
+  };
+
   const PlayerControls: React.FC<{ player: Player }> = ({ player }) => (
     <div className="bg-gray-700 p-3 rounded-lg flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 md:space-x-2">
       <span className="font-bold w-full md:w-1/4">{player.name} ({player.score})</span>
@@ -64,6 +74,7 @@ const AdminDashboard: React.FC = () => {
             <h2 className="text-xl font-bold mb-3 border-b border-gray-600 pb-2">Game Controls</h2>
             <div className="flex flex-wrap gap-2">
               {!gameState.isGameStarted && <button onClick={() => socket.startGame()} className="bg-green-600 hover:bg-green-500 px-4 py-2 rounded-md font-semibold">Start Game</button>}
+              {gameState.isGameStarted && <button onClick={handleEndGame} className="bg-red-600 hover:bg-red-500 px-4 py-2 rounded-md font-semibold">End Game & Reset</button>}
               <button onClick={() => socket.resetBuzzer()} className="bg-yellow-600 hover:bg-yellow-500 px-4 py-2 rounded-md font-semibold">Reset Buzzer</button>
               {gameState.currentRound === Round.SPEED_UP && <button onClick={() => socket.revealAnswers()} className="bg-purple-600 hover:bg-purple-500 px-4 py-2 rounded-md font-semibold">Reveal Answers</button>}
             </div>

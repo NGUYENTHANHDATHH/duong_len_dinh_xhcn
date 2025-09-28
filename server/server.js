@@ -161,6 +161,31 @@ io.on('connection', (socket) => {
     } catch (e) { console.error('startGame Error:', e); }
   });
 
+  socket.on('endGame', () => {
+    try {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+
+      // Preserve players but reset their scores and round-specific data
+      const resetPlayers = gameState.players.map(p => ({
+        id: p.id,
+        name: p.name,
+        score: 0,
+      }));
+
+      // Reset the game state to its default values
+      gameState = { ...defaultState };
+
+      // Restore the player list with reset scores
+      gameState.players = resetPlayers;
+
+      saveState();
+      broadcastState();
+    } catch (e) { console.error('endGame Error:', e) }
+  });
+
   socket.on('switchRound', ({ round }) => {
     try {
       gameState.currentRound = round;

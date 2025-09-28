@@ -6,7 +6,7 @@ import { ADMIN_CODE } from '../constants';
 const HomePage: React.FC = () => {
   const [name, setName] = useState('');
   const navigate = useNavigate();
-  const { socket, gameState } = useGame();
+  const { socket, gameState, unlockAudio } = useGame();
 
   // Automatically reconnect player on page load if they are already in the game
   useEffect(() => {
@@ -27,6 +27,7 @@ const HomePage: React.FC = () => {
   }, [gameState, navigate]);
 
   const handleJoin = () => {
+    unlockAudio(); // Unlock audio on user interaction
     if (!name.trim()) return;
 
     const trimmedName = name.trim();
@@ -65,6 +66,11 @@ const HomePage: React.FC = () => {
     }
   };
 
+  const handleViewPublicScreen = () => {
+    unlockAudio(); // Unlock audio on user interaction
+    navigate('/game');
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-center bg-cover p-4" style={{ backgroundImage: "url('/assets/imgs/bua_liem.jpg')" }}>
       <div className="w-full max-w-4xl text-center">
@@ -91,7 +97,7 @@ const HomePage: React.FC = () => {
         </div>
 
         <button
-          onClick={() => navigate('/game')}
+          onClick={handleViewPublicScreen}
           className="mt-8 text-yellow-400 hover:text-yellow-300 transition text-lg"
         >
           View Public Screen <i className="fas fa-tv ml-2"></i>

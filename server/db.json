@@ -1,16 +1,14 @@
 {
   "players": [
     {
-      "id": "1759045866881-0.7237797817593039",
-      "name": "abc",
-      "score": 120,
-      "speedUpAnswer": "",
-      "hasStarOfHope": false
+      "id": "1759069738507-0.012335568184079437",
+      "name": "abdf",
+      "score": 0
     }
   ],
   "isGameStarted": true,
-  "currentRound": "Tăng tốc",
-  "currentEasyQuestion": 0,
+  "currentRound": "LOBBY",
+  "currentEasyQuestion": -1,
   "currentHardQuestion": -1,
   "revealedClues": [
     false,
@@ -24,7 +22,6 @@
     false,
     false
   ],
-  "isObstacleVisible": false,
   "showSpeedUpAnswers": false,
   "finishQuestionType": "easy"
 }

@@ -52,6 +52,7 @@ class SocketService {
 
   // Admin Actions
   startGame() { this.socket.emit('startGame'); }
+  endGame() { this.socket.emit('endGame'); }
   switchRound(round: Round) { this.socket.emit('switchRound', { round }); }
   startTimer(seconds: number) { this.socket.emit('startTimer', { seconds }); }
   navigateQuestion(type: 'easy' | 'hard', direction: 'next' | 'prev') { this.socket.emit('navigateQuestion', { type, direction }); }

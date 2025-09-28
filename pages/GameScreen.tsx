@@ -51,7 +51,7 @@ const RoundDisplay: React.FC<{
   const IntroScreen = () => {
     const videoMap: Partial<{ [key in Round]: { src: string, title: string } }> = {
       [Round.WARM_UP]: { src: "/assets/videos/khoi_dong.mp4", title: "Intro phần thi Khởi động" },
-      [Round.OBSTACLE]: { src: "/assets/videos/vuot_chuong_ngai_vat.mp4", title: "Intro phần thi Vượt chướng ngại vật" },
+      [Round.OBSTACLE]: { src: "/assets/videos/khoi_dong.mp4", title: "Intro phần thi Vượt chướng ngại vật" },
       [Round.SPEED_UP]: { src: "/assets/videos/tang_toc.mp4", title: "Intro phần thi Tăng tốc" },
       [Round.FINISH]: { src: "/assets/videos/ve_dich.mp4", title: "Intro phần thi Về đích" },
     };
