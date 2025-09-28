@@ -1,0 +1,19 @@
+{
+  "players": [
+    {
+      "id": "1759045866881-0.7237797817593039",
+      "name": "abc",
+      "score": -20,
+      "speedUpAnswer": "dfsvvccx",
+      "hasStarOfHope": false
+    },
+    {
+      "id": "1759046716693-0.3983156200944977",
+      "name": "bscffgdg",
+      "score": 0,
+      "speedUpAnswer": "",
+      "hasStarOfHope": false
+    }
+  ],
+  "isGameStarted": true
+}
