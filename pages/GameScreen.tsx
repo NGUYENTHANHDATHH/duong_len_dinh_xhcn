@@ -41,6 +41,33 @@ const PlayerCard: React.FC<{
   );
 });
 
+// New component to render black boxes for the answer length
+const AnswerBoxes: React.FC<{ answer: string }> = React.memo(({ answer }) => {
+  return (
+    <div className="flex flex-wrap items-center gap-1 mt-2">
+      {answer.split('').map((char, index) => {
+        if (char === ' ') {
+          return <div key={index} className="w-5 h-8" />; // A gap for a space
+        }
+        if (char === '/') {
+          return (
+            <div key={index} className="w-5 h-8 flex items-center justify-center text-xl font-bold">
+              /
+            </div>
+          );
+        }
+        return (
+          <div
+            key={index}
+            className="w-5 h-8 bg-black border border-gray-400 rounded-sm"
+          />
+        );
+      })}
+    </div>
+  );
+});
+
+
 // Extracted to prevent re-renders and added intro screen logic
 const RoundDisplay: React.FC<{
   currentRound: Round,
@@ -51,7 +78,7 @@ const RoundDisplay: React.FC<{
   const IntroScreen = () => {
     const videoMap: Partial<{ [key in Round]: { src: string, title: string } }> = {
       [Round.WARM_UP]: { src: "/assets/videos/khoi_dong.mp4", title: "Intro phần thi Khởi động" },
-      [Round.OBSTACLE]: { src: "/assets/videos/khoi_dong.mp4", title: "Intro phần thi Vượt chướng ngại vật" },
+      [Round.OBSTACLE]: { src: "/assets/videos/vuot_chuong_ngai_vat.mp4", title: "Intro phần thi Vượt chướng ngại vật" },
       [Round.SPEED_UP]: { src: "/assets/videos/tang_toc.mp4", title: "Intro phần thi Tăng tốc" },
       [Round.FINISH]: { src: "/assets/videos/ve_dich.mp4", title: "Intro phần thi Về đích" },
     };
@@ -119,7 +146,7 @@ const RoundDisplay: React.FC<{
                       <p className="mt-2 pt-2 border-t border-blue-600 font-bold text-yellow-300">Answer: {clue.answer}</p>
                     )}
                   </>
-                ) : <p>???</p>}
+                ) : <AnswerBoxes answer={clue.answer} />}
               </div>
             ))}
           </div>

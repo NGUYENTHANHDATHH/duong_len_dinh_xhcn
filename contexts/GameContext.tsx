@@ -18,28 +18,29 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [error, setError] = useState<string | null>(null);
 
   const bellSoundRef = useRef<HTMLAudioElement | null>(null);
+  const countdownSoundRef = useRef<HTMLAudioElement | null>(null);
   const [isAudioUnlocked, setIsAudioUnlocked] = useState(false);
 
-  useEffect(() => {
-    // Preload the audio element once
-    bellSoundRef.current = new Audio('/assets/sounds/bell.mp3');
-    bellSoundRef.current.load();
-  }, []);
 
-  const unlockAudio = () => {
-    if (bellSoundRef.current && !isAudioUnlocked) {
-      // A common trick to unlock audio on iOS and other browsers
-      bellSoundRef.current.play().then(() => {
-        bellSoundRef.current?.pause();
-        bellSoundRef.current!.currentTime = 0;
-        setIsAudioUnlocked(true);
-        console.log("Audio context unlocked by user interaction.");
-      }).catch(error => {
-        // This might still fail, but it's our best shot. The user will have to interact again.
-        console.warn("Audio unlock failed. Another user interaction might be needed.", error);
-      });
+
+  // Effect for timer countdown sound
+  useEffect(() => {
+    const sound = countdownSoundRef.current;
+    if (!gameState || !sound) return;
+
+    // Play sound when timer hits 10 seconds
+    if (gameState.timer === 10) {
+      sound.currentTime = 0; // Rewind
+      sound.play().catch(e => console.error("Failed to play countdown sound:", e));
     }
-  };
+    // Stop sound if timer is reset, expires, or set to a value > 10
+    else if (gameState.timer === 0 || gameState.timer > 10) {
+      if (!sound.paused) {
+        sound.pause();
+        sound.currentTime = 0;
+      }
+    }
+  }, [gameState?.timer]);
 
   useEffect(() => {
     const handleStateUpdate = (state: GameState) => {
@@ -109,7 +110,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }
 
   return (
-    <GameContext.Provider value={{ gameState, socket: socketService, questions, unlockAudio }}>
+    <GameContext.Provider value={{ gameState, socket: socketService, questions }}>
       {children}
     </GameContext.Provider>
   );
