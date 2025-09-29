@@ -134,6 +134,19 @@ const RoundDisplay: React.FC<{
           <h2 className="text-4xl font-bold mb-4 uppercase">Keyword has {data.keyword.length} letters</h2>
           <div className="relative mb-4">
             <img src={data.img} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
+            {/* 2x2 numbered black boxes overlay; hide each when its clue is revealed */}
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
+              <div className="w-full max-w-2xl h-full grid grid-cols-2 grid-rows-2 gap-2">
+                {data.clues.slice(0, 4).map((_, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center justify-center bg-black bg-opacity-80 text-white text-4xl font-extrabold rounded-lg border border-gray-500 ${gameState.revealedClues[i] ? 'hidden' : ''}`}
+                  >
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
             {data.clues.map((clue, index) => (

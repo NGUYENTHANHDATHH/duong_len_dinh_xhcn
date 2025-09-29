@@ -19,6 +19,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const bellSoundRef = useRef<HTMLAudioElement | null>(null);
   const countdownSoundRef = useRef<HTMLAudioElement | null>(null);
+  const genericSoundRef = useRef<HTMLAudioElement | null>(null);
   const [isAudioUnlocked, setIsAudioUnlocked] = useState(false);
 
 
@@ -41,6 +42,13 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
     }
   }, [gameState?.timer]);
+
+  // Unlock audio on first user interaction (exposed via context)
+  const unlockAudio = () => {
+    if (isAudioUnlocked) return;
+    const tmp = new Audio();
+    tmp.play().catch(() => {}).finally(() => setIsAudioUnlocked(true));
+  };
 
   useEffect(() => {
     const handleStateUpdate = (state: GameState) => {
@@ -72,14 +80,19 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     // Play bell sound when any player buzzes
     const handleBuzzed = () => {
+      // Prefer dedicated bell ref if available
       if (bellSoundRef.current) {
-        bellSoundRef.current.currentTime = 0; // Rewind to start
-        bellSoundRef.current.play().catch((error) => {
-          console.error('Failed to play sound:', error);
-          // This error is expected if the user hasn't interacted with the page yet.
-          // The unlockAudio function handles getting permission on the first interaction.
-        });
+        bellSoundRef.current.currentTime = 0;
+        bellSoundRef.current.play().catch(() => {});
+        return;
       }
+      // Fallback: use generic audio element to play bell
+      if (!genericSoundRef.current) {
+        genericSoundRef.current = new Audio();
+      }
+      genericSoundRef.current.src = '/assets/sounds/bell.mp3';
+      genericSoundRef.current.currentTime = 0;
+      genericSoundRef.current.play().catch(() => {});
     };
 
     try {
@@ -87,6 +100,23 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       socketService.on('gameStateUpdate', handleStateUpdate);
       socketService.on('scoreUpdated', handleScoreUpdate);
       socketService.on('buzzed', handleBuzzed);
+      socketService.on('playSound', ({ name }: { name: string }) => {
+        if (!name) return;
+        // Prefer dedicated refs when known
+        if (name === 'bell.mp3' && bellSoundRef.current) {
+          bellSoundRef.current.currentTime = 0;
+          bellSoundRef.current.play().catch(() => {});
+          return;
+        }
+        // Fallback generic element for arbitrary files
+        if (!genericSoundRef.current) {
+          genericSoundRef.current = new Audio();
+        }
+        const url = `/assets/sounds/${name}`;
+        genericSoundRef.current.src = url;
+        genericSoundRef.current.currentTime = 0;
+        genericSoundRef.current.play().catch(() => {});
+      });
     } catch (e) {
       console.error("Socket initialization failed:", e);
       setError("Could not connect to the game server.");
@@ -98,6 +128,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       socketService.off('gameStateUpdate', handleStateUpdate);
       socketService.off('scoreUpdated', handleScoreUpdate);
       socketService.off('buzzed', handleBuzzed);
+      socketService.off('playSound');
     };
   }, []);
 
@@ -110,7 +141,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   }
 
   return (
-    <GameContext.Provider value={{ gameState, socket: socketService, questions }}>
+    <GameContext.Provider value={{ gameState, socket: socketService, questions, unlockAudio }}>
       {children}
     </GameContext.Provider>
   );

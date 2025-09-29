@@ -67,6 +67,9 @@ class SocketService {
   setActivePlayer(playerId: string) { this.socket.emit('setActivePlayer', { playerId }); }
   kickPlayer(playerId: string) { this.socket.emit('kickPlayer', { playerId }); }
   resetBuzzer() { this.socket.emit('resetBuzzer'); }
+
+  // Broadcast a sound to all clients. 'name' should match a file in public/assets/sounds
+  playSound(name: string) { this.socket.emit('playSound', { name }); }
 }
 
 // Singleton instance

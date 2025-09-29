@@ -351,6 +351,14 @@ io.on('connection', (socket) => {
     } catch (e) { console.error('resetBuzzer Error:', e); }
   });
 
+  // Generic sound broadcast: clients will play a file from public/assets/sounds
+  socket.on('playSound', ({ name }) => {
+    try {
+      if (typeof name !== 'string' || !name) return;
+      io.emit('playSound', { name });
+    } catch (e) { console.error('playSound Error:', e); }
+  });
+
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
   });
