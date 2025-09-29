@@ -51,7 +51,7 @@ const defaultState = {
   revealedClues: [false, false, false, false],
   revealedAnswers: [false, false, false, false],
   showSpeedUpAnswers: false,
-  finishQuestionType: 'easy',
+  finishQuestionType: '20p',
 };
 
 function loadState() {
@@ -229,14 +229,18 @@ io.on('connection', (socket) => {
   socket.on('navigateQuestion', ({ type, direction }) => {
     try {
       if (!questions) return;
+      const veDich = questions.VeDich || {};
+      const easySet = veDich.easy || veDich['20p'] || [];
+      const hardSet = veDich.hard || veDich['30p'] || [];
+
       if (type === 'easy') {
         const newIndex = gameState.currentEasyQuestion + (direction === 'next' ? 1 : -1);
-        if (newIndex >= 0 && newIndex < questions.VeDich.easy.length) {
+        if (newIndex >= 0 && newIndex < easySet.length) {
           gameState.currentEasyQuestion = newIndex;
         }
       } else {
         const newIndex = gameState.currentHardQuestion + (direction === 'next' ? 1 : -1);
-        if (newIndex >= 0 && newIndex < questions.VeDich.hard.length) {
+        if (newIndex >= 0 && newIndex < hardSet.length) {
           gameState.currentHardQuestion = newIndex;
         }
       }

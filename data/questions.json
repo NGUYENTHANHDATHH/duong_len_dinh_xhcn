@@ -69,7 +69,7 @@
     }
   ],
   "VeDich": {
-    "easy": [
+    "20p": [
       {
         "question": "Who is the author of 'The Tale of Kieu'?"
       },
@@ -80,7 +80,7 @@
         "question": "What is the largest lake in Vietnam?"
       }
     ],
-    "hard": [
+    "30p": [
       {
         "question": "Which chemical element has the symbol 'O'?"
       },

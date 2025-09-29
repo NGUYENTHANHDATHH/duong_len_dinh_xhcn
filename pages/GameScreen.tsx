@@ -9,16 +9,31 @@ interface GameScreenProps {
   isPlayerView: boolean;
 }
 
-const VideoFrame: React.FC<{ src: string }> = React.memo(({ src }) => (
-  <iframe
-    src={src}
-    title="Speed up video"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-    className="absolute top-0 left-0 w-full h-full"
-  ></iframe>
-));
+const VideoFrame: React.FC<{ src: string }> = React.memo(({ src }) => {
+  const isYouTube = /youtube\.com\/embed\//.test(src) || /youtu\.be\//.test(src);
+  if (isYouTube) {
+    return (
+      <iframe
+        src={src}
+        title="Speed up video"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        className="absolute top-0 left-0 w-full h-full rounded-lg"
+      />
+    );
+  }
+  return (
+    <video
+      src={src}
+      className="absolute top-0 left-0 w-full h-full object-contain rounded-lg"
+      autoPlay
+      muted
+      loop
+      playsInline
+    />
+  );
+});
 
 // Extracted to prevent re-renders on parent state changes
 const PlayerCard: React.FC<{
@@ -88,14 +103,13 @@ const RoundDisplay: React.FC<{
     if (video) {
       return (
         <div className="relative w-full max-w-4xl" style={{ paddingBottom: '56.25%' /* 16:9 Aspect Ratio */ }}>
-          <iframe
+          <video
             src={video.src}
             title={video.title}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className="absolute top-0 left-0 w-full h-full rounded-lg"
-          ></iframe>
+            className="absolute top-0 left-0 w-full h-full object-contain rounded-lg"
+            autoPlay
+            playsInline
+          />
         </div>
       );
     }
@@ -136,11 +150,11 @@ const RoundDisplay: React.FC<{
             <img src={data.img} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
             {/* 2x2 numbered black boxes overlay; hide each when its clue is revealed */}
             <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
-              <div className="w-full max-w-2xl h-full grid grid-cols-2 grid-rows-2 gap-2">
-                {data.clues.slice(0, 4).map((_, i) => (
+              <div className="w-full max-w-2xl h-full grid grid-cols-4 grid-rows-2">
+                {data.clues.slice(0, 8).map((_, i) => (
                   <div
                     key={i}
-                    className={`flex items-center justify-center bg-black bg-opacity-80 text-white text-4xl font-extrabold rounded-lg border border-gray-500 ${gameState.revealedClues[i] ? 'hidden' : ''}`}
+                    className={`flex items-center justify-center bg-black text-white text-4xl font-extrabold border border-gray-500 ${gameState.revealedAnswers[i] ? 'hidden' : ''}`}
                   >
                     {i + 1}
                   </div>
@@ -178,7 +192,10 @@ const RoundDisplay: React.FC<{
       );
     }
     case Round.FINISH: {
-      const questionSet = gameState.finishQuestionType === 'easy' ? questions.VeDich.easy : questions.VeDich.hard;
+      const veDich = questions.VeDich as any;
+      const easySet = veDich.easy || veDich['20p'];
+      const hardSet = veDich.hard || veDich['30p'];
+      const questionSet = gameState.finishQuestionType === 'easy' ? easySet : hardSet;
       const index = gameState.finishQuestionType === 'easy' ? gameState.currentEasyQuestion : gameState.currentHardQuestion;
       const question = questionSet[index % questionSet.length];
       const activePlayer = getPlayerById(gameState.activePlayerId || '');

@@ -115,7 +115,7 @@ const AdminDashboard: React.FC = () => {
                   <h3 className="font-semibold mb-2">"Khởi động" Question Control</h3>
                   <div className="flex flex-wrap gap-2">
                     <button onClick={() => socket.navigateWarmUpQuestion('prev')} className="bg-gray-500 hover:bg-gray-400 px-3 py-1 rounded">Prev Question</button>
-                    <button onClick={() => { socket.navigateWarmUpQuestion('next'); socket.playSound('show_question.mp3'); }} className="bg-green-500 hover:bg-green-400 px-3 py-1 rounded">Next Question</button>
+                    <button onClick={() => socket.navigateWarmUpQuestion('next')} className="bg-green-500 hover:bg-green-400 px-3 py-1 rounded">Next Question</button>
                   </div>
                 </div>
               )}

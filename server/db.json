@@ -1,8 +1,8 @@
 {
   "players": [
     {
-      "id": "1759069738507-0.012335568184079437",
-      "name": "abdf",
+      "id": "1759170117895-0.5256387759662485",
+      "name": "abc",
       "score": 0
     }
   ],
@@ -31,5 +31,6 @@
     false
   ],
   "showSpeedUpAnswers": false,
-  "finishQuestionType": "easy"
+  "activePlayerId": "1759170117895-0.5256387759662485",
+  "finishQuestionType": "20p"
 }
