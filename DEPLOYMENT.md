@@ -23,7 +23,44 @@ cd server && npm run dev
 
 ## Production Deployment
 
-### Option 1: Deploy to Render.com
+### Recommended: Vercel (Frontend) + Render (Backend)
+
+#### Frontend Deployment on Vercel:
+
+1. **Connect Repository to Vercel:**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Vercel will auto-detect it's a Vite project
+
+2. **Vercel Configuration:**
+   - Build Command: `npm run build:prod`
+   - Output Directory: `dist`
+   - Framework Preset: Vite
+
+3. **Environment Variables in Vercel:**
+   - Go to Project Settings → Environment Variables
+   - Add: `VITE_SERVER_URL` = `https://your-render-backend-url.onrender.com`
+
+#### Backend Deployment on Render:
+
+1. **Create New Web Service:**
+   - Connect your GitHub repository
+   - Choose "Web Service"
+   - Set Root Directory to `server`
+
+2. **Render Configuration:**
+   - Build Command: `npm run build`
+   - Start Command: `npm start`
+   - Environment: Node.js
+
+3. **Environment Variables in Render:**
+   - Go to Environment tab
+   - Add: `NODE_ENV=production`
+   - Add: `PORT` (Render will set this automatically)
+
+### Alternative: Single Platform Deployment
+
+#### Deploy Everything to Render:
 
 1. Connect your repository to Render
 2. Set up a Web Service with these settings:
@@ -34,19 +71,6 @@ cd server && npm run dev
 3. Set environment variables in Render dashboard:
    - `NODE_ENV=production`
    - `VITE_SERVER_URL=https://your-app-name.onrender.com`
-
-### Option 2: Deploy to Vercel/Netlify (Frontend) + Railway/Heroku (Backend)
-
-#### Frontend (Vercel/Netlify):
-1. Build command: `npm run build:prod`
-2. Output directory: `dist`
-3. Environment variables:
-   - `VITE_SERVER_URL=https://your-backend-url.com`
-
-#### Backend (Railway/Heroku):
-1. Deploy the `server` folder
-2. Build command: `npm run build`
-3. Start command: `npm start`
 
 ## Environment Variables
 
