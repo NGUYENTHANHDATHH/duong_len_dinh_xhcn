@@ -7,7 +7,7 @@ class SocketService {
 
   constructor() {
     // Explicitly connect to the backend server, defining transports
-    this.socket = io('http://localhost:3001', {
+    this.socket = io('https://duong-len-dinh-xhcn.onrender.com', {
       transports: ['websocket', 'polling'],
     });
 

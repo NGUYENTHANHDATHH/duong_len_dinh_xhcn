@@ -369,7 +369,7 @@ io.on('connection', (socket) => {
 });
 
 // --- Start Server ---
-const PORT = process.env.PORT || 3001;
+const PORT = "https://duong-len-dinh-xhcn.onrender.com";
 server.listen(PORT, () => {
   loadState();
   console.log(`Olympia server running on http://localhost:${PORT}`);
