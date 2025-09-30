@@ -34,12 +34,18 @@ const io = new Server(server, {
   transports: ['websocket', 'polling']
 });
 
-// Serve static files from the React app build directory
-app.use(express.static(path.join(projectRoot, 'dist')));
+// API endpoint for health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', message: 'Olympia Game Show Backend is running' });
+});
 
-// Handle React routing, return all requests to React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(projectRoot, 'dist', 'index.html'));
+// API endpoint for game status
+app.get('/api/status', (req, res) => {
+  res.json({ 
+    gameState: gameState,
+    isConnected: true,
+    players: gameState.players.length
+  });
 });
 
 // --- Game State Management ---

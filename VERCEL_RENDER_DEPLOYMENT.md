@@ -16,7 +16,7 @@
    Name: olympia-backend (or your preferred name)
    Root Directory: server
    Environment: Node
-   Build Command: npm run build
+   Build Command: (leave empty or use: npm install)
    Start Command: npm start
    ```
 
@@ -48,8 +48,11 @@
 
 4. **Set Environment Variables:**
    - Go to Project Settings → Environment Variables
-   - Add: `VITE_SERVER_URL` = `https://your-render-backend-url.onrender.com`
+   - Click "Add New"
+   - Name: `VITE_SERVER_URL`
+   - Value: `https://your-render-backend-url.onrender.com`
    - (Use the URL from Step 1)
+   - Make sure to set it for all environments (Production, Preview, Development)
 
 5. **Deploy:**
    - Click "Deploy"
@@ -85,19 +88,36 @@
 
 ### Common Issues:
 
-1. **Socket Connection Fails:**
+1. **Render Error: "ENOENT: no such file or directory, stat '/opt/render/project/src/dist/index.html'":**
+   - This happens when the backend tries to serve frontend files that don't exist
+   - **Solution:** The backend should only handle API and Socket.io connections
+   - Make sure Build Command is empty or just `npm install`
+   - The frontend is deployed separately on Vercel
+
+2. **Environment Variable Error: "VITE_SERVER_URL references Secret which does not exist":**
+   - This happens when using the old `vercel.json` format
+   - **Solution:** Set the environment variable directly in Vercel dashboard
+   - Go to Project Settings → Environment Variables
+   - Add `VITE_SERVER_URL` with your Render backend URL
+   - Remove any secret references from `vercel.json`
+
+3. **Socket Connection Fails:**
    - Check `VITE_SERVER_URL` in Vercel environment variables
    - Ensure it matches your Render backend URL exactly
+   - Make sure the URL includes `https://` and ends with `.onrender.com`
 
-2. **Build Fails on Vercel:**
+4. **Build Fails on Vercel:**
    - Check that `npm run build:prod` works locally
    - Ensure all dependencies are in `package.json`
+   - Verify the build command in Vercel settings
 
-3. **Build Fails on Render:**
-   - Check that `npm run build` works in the `server` directory
+5. **Build Fails on Render:**
+   - Check that `npm start` works in the `server` directory
    - Ensure `server/package.json` has the correct scripts
+   - Verify the root directory is set to `server`
+   - Make sure Build Command is empty or just `npm install`
 
-4. **CORS Issues:**
+6. **CORS Issues:**
    - Render backend is configured to allow all origins
    - If issues persist, check the CORS settings in `server/server.js`
 
