@@ -18,6 +18,22 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
+      build: {
+        outDir: 'dist',
+        assetsDir: 'assets',
+        sourcemap: false,
+        minify: 'terser',
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              vendor: ['react', 'react-dom'],
+              router: ['react-router-dom'],
+              socket: ['socket.io-client']
+            }
+          }
+        }
+      },
+      base: process.env.NODE_ENV === 'production' ? '/' : '/'
     };
 });

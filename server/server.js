@@ -34,6 +34,14 @@ const io = new Server(server, {
   transports: ['websocket', 'polling']
 });
 
+// Serve static files from the React app build directory
+app.use(express.static(path.join(projectRoot, 'dist')));
+
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(projectRoot, 'dist', 'index.html'));
+});
+
 // --- Game State Management ---
 let questions;
 let gameState;
@@ -369,8 +377,8 @@ io.on('connection', (socket) => {
 });
 
 // --- Start Server ---
-const PORT = "https://duong-len-dinh-xhcn.onrender.com";
+const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   loadState();
-  console.log(`Olympia server running on http://localhost:${PORT}`);
+  console.log(`Olympia server running on port ${PORT}`);
 });

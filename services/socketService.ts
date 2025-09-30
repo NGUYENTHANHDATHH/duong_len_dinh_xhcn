@@ -6,8 +6,12 @@ class SocketService {
   private socket: Socket;
 
   constructor() {
+    // Use environment variable for server URL, fallback to localhost for development
+    const serverUrl = (import.meta as any).env?.VITE_SERVER_URL || 
+      ((import.meta as any).env?.DEV ? 'http://localhost:3001' : 'https://duong-len-dinh-xhcn.onrender.com');
+    
     // Explicitly connect to the backend server, defining transports
-    this.socket = io('https://duong-len-dinh-xhcn.onrender.com', {
+    this.socket = io(serverUrl, {
       transports: ['websocket', 'polling'],
     });
 
