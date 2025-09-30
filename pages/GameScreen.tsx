@@ -92,10 +92,10 @@ const RoundDisplay: React.FC<{
 
   const IntroScreen = () => {
     const videoMap: Partial<{ [key in Round]: { src: string, title: string } }> = {
-      [Round.WARM_UP]: { src: "../public/assets/videos/khoi_dong.mp4", title: "Intro phần thi Khởi động" },
-      [Round.OBSTACLE]: { src: "..public/assets/videos/vuot_chuong_ngoai_vat.mp4", title: "Intro phần thi Vượt chướng ngại vật" },
-      [Round.SPEED_UP]: { src: "../public/assets/videos/tang_toc.mp4", title: "Intro phần thi Tăng tốc" },
-      [Round.FINISH]: { src: "../public/assets/videos/ve_dich.mp4", title: "Intro phần thi Về đích" },
+      [Round.WARM_UP]: { src: "/assets/videos/khoi_dong.mp4", title: "Intro phần thi Khởi động" },
+      [Round.OBSTACLE]: { src: "/assets/videos/vuot_chuong_ngoai_vat.mp4", title: "Intro phần thi Vượt chướng ngại vật" },
+      [Round.SPEED_UP]: { src: "/assets/videos/tang_toc.mp4", title: "Intro phần thi Tăng tốc" },
+      [Round.FINISH]: { src: "/assets/videos/ve_dich.mp4", title: "Intro phần thi Về đích" },
     };
 
     const video = videoMap[currentRound];
@@ -287,7 +287,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('../public/assets/imgs/bg_sys.png')" }}>
+    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/imgs/bg_sys.png')" }}>
       {/* Main Content */}
       <main className="flex-1 p-4 md:p-8 flex flex-col " >
         <header className={`p-4 rounded-t-xl text-center ${ROUND_COLORS[currentRound]}`}>

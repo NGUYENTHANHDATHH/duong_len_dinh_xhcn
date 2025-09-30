@@ -72,7 +72,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-center bg-cover p-4" style={{ backgroundImage: "url('../public/assets/imgs/bua_liem.jpg')" }}>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-center bg-cover p-4" style={{ backgroundImage: "url('/assets/imgs/bua_liem.jpg')" }}>
       <div className="w-full max-w-4xl text-center">
         <h1 className="text-5xl mb-8 md:text-6xl font-extrabold text-yellow-400 mb-2">
           Đường Lên Đỉnh
