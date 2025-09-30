@@ -160,7 +160,7 @@ const RoundDisplay: React.FC<{
                         flex items-center justify-center
                         bg-black text-white text-4xl font-extrabold border border-gray-500
                         transition-opacity duration-300 ease-in-out
-                        ${gameState.revealedClues[i] ? 'opacity-0' : 'opacity-100'}
+                        ${gameState.revealedAnswers[i] ? 'opacity-0' : 'opacity-100'}
                     `}
                 >
                     {i + 1}
