@@ -294,7 +294,7 @@ io.on('connection', (socket) => {
 
   socket.on('revealClue', ({ index }) => {
     try {
-      if (index >= 0 && index < 4) {
+      if (index >= 0 && index < 8) {
         gameState.revealedClues[index] = true;
         broadcastState();
       }
@@ -303,7 +303,7 @@ io.on('connection', (socket) => {
 
   socket.on('revealAnswer', ({ index }) => {
     try {
-      if (index >= 0 && index < 4) {
+      if (index >= 0 && index < 8) {
         gameState.revealedAnswers[index] = true;
         broadcastState();
       }

@@ -139,7 +139,7 @@ const AdminDashboard: React.FC = () => {
                     </button>
                   </div>
                   <div className="space-y-2">
-                    {[0, 1, 2, 3].map(i => (
+                    {[0, 1, 2, 3,4,5,6,7].map(i => (
                       <div key={i} className="flex gap-2 items-center">
                         <span className="font-bold w-16">Clue {i + 1}:</span>
                         <button

@@ -102,15 +102,17 @@ const RoundDisplay: React.FC<{
 
     if (video) {
       return (
-        <div className="relative w-full max-w-4xl" style={{ paddingBottom: '56.25%' /* 16:9 Aspect Ratio */ }}>
-          <video
-            src={video.src}
-            title={video.title}
-            className="absolute top-0 left-0 w-full h-full object-contain rounded-lg"
-            autoPlay
-            playsInline
-          />
-        </div>
+        <div className="relative w-full max-w-4xl aspect-video overflow-hidden">
+    <video
+        src={video.src}
+        title={video.title}
+        className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
+        frameBorder="0"
+        allow="autoplay; encrypted-media; fullscreen"
+        allowFullScreen
+        controls
+    />
+</div>
       );
     }
     return null;
@@ -147,21 +149,26 @@ const RoundDisplay: React.FC<{
         <div className="text-center">
           <h2 className="text-4xl font-bold mb-4 uppercase">Keyword has {data.keyword.length} letters</h2>
           <div className="relative mb-4">
-            <img src={data.img} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
-            {/* 2x2 numbered black boxes overlay; hide each when its clue is revealed */}
-            <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
-              <div className="w-full max-w-2xl h-full grid grid-cols-4 grid-rows-2">
-                {data.clues.slice(0, 8).map((_, i) => (
-                  <div
+    <img src={data.img} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
+    {/* 2x2 numbered black boxes overlay; hide each when its clue is revealed */}
+    <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
+        <div className="w-full max-w-2xl h-full grid grid-cols-4 grid-rows-2"> {/* Đảm bảo grid này bao phủ hoàn hảo ảnh */}
+            {data.clues.slice(0, 8).map((_, i) => (
+                <div
                     key={i}
-                    className={`flex items-center justify-center bg-black text-white text-4xl font-extrabold border border-gray-500 ${gameState.revealedAnswers[i] ? 'hidden' : ''}`}
-                  >
+                    className={`
+                        flex items-center justify-center
+                        bg-black text-white text-4xl font-extrabold border border-gray-500
+                        transition-opacity duration-300 ease-in-out
+                        ${gameState.revealedClues[i] ? 'opacity-0' : 'opacity-100'}
+                    `}
+                >
                     {i + 1}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
             {data.clues.map((clue, index) => (
               <div key={index} className={`p-4 rounded-lg transition-colors duration-300 ${gameState.revealedClues[index] ? 'bg-blue-800' : 'bg-gray-700'}`}>
@@ -289,7 +296,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/imgs/bg_sys.png')" }}>
       {/* Main Content */}
-      <main className="flex-1 p-4 md:p-8 flex flex-col " >
+      <main className="flex-grow-[3] p-4 md:p-8 flex flex-col" >
         <header className={`p-4 rounded-t-xl text-center ${ROUND_COLORS[currentRound]}`}>
           <h1 className="text-3xl font-bold">{currentRound}</h1>
         </header>
@@ -335,7 +342,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
       </main>
 
       {/* Sidebar */}
-      <aside className="w-full lg:w-96 bg-white-900 p-4 md:p-6 flex flex-col gap-6 bg-opacity-20">
+      <aside className="flex-grow-[1] w-full lg:w-auto bg-white-900 p-4 md:p-6 flex flex-col gap-6 bg-opacity-20">
         <div>
           <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 drop-shadow-[0_0_10px_rgba(255,255,0,0.8)]">
             Players</h2>
