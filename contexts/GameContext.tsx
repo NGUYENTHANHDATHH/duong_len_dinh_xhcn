@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
 import { socketService } from '../services/socketService';
-import { GameState, QuestionData } from '../types';
+import { GameState, QuestionData, Player } from '../types';
 
 interface GameContextType {
   gameState: GameState | null;
@@ -47,12 +47,43 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const unlockAudio = () => {
     if (isAudioUnlocked) return;
     const tmp = new Audio();
-    tmp.play().catch(() => {}).finally(() => setIsAudioUnlocked(true));
+    tmp.play().catch(() => { }).finally(() => setIsAudioUnlocked(true));
   };
 
   useEffect(() => {
     const handleStateUpdate = (state: GameState) => {
-      setGameState(state);
+      // Enrich state with local timestamps when answers change
+      setGameState(prevState => {
+        if (!prevState) return state;
+        const prevPlayersById: Map<string, Player> = new Map(prevState.players.map((p: Player) => [p.id, p]));
+        const playersWithTimestamps = state.players.map(p => {
+          const prev = prevPlayersById.get(p.id);
+          let speedUpAnswerAt = p.speedUpAnswerAt;
+          let obstacleAnswerAt = p.obstacleAnswerAt;
+
+          if (p.speedUpAnswer !== prev?.speedUpAnswer) {
+            // Set timestamp when a new answer is provided; clear when answer is cleared
+            speedUpAnswerAt = p.speedUpAnswer ? new Date().toISOString() : undefined;
+          }
+          if (p.obstacleAnswer !== prev?.obstacleAnswer) {
+            obstacleAnswerAt = p.obstacleAnswer ? new Date().toISOString() : undefined;
+          }
+
+          // If admin just toggled showing answers ON, ensure existing answers have a timestamp
+          const justRevealedPlayerAnswers = state.showPlayerAnswers && !prevState.showPlayerAnswers;
+          if (justRevealedPlayerAnswers && p.obstacleAnswer && !obstacleAnswerAt) {
+            obstacleAnswerAt = new Date().toISOString();
+          }
+          const justRevealedSpeedUpAnswers = state.showSpeedUpAnswers && !prevState.showSpeedUpAnswers;
+          if (justRevealedSpeedUpAnswers && p.speedUpAnswer && !speedUpAnswerAt) {
+            speedUpAnswerAt = new Date().toISOString();
+          }
+
+          return { ...p, speedUpAnswerAt, obstacleAnswerAt };
+        });
+
+        return { ...state, players: playersWithTimestamps };
+      });
     };
 
     const handleInit = (data: { gameState: GameState, questions: QuestionData }) => {
@@ -83,7 +114,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       // Prefer dedicated bell ref if available
       if (bellSoundRef.current) {
         bellSoundRef.current.currentTime = 0;
-        bellSoundRef.current.play().catch(() => {});
+        bellSoundRef.current.play().catch(() => { });
         return;
       }
       // Fallback: use generic audio element to play bell
@@ -92,7 +123,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       genericSoundRef.current.src = '/assets/sounds/bell.mp3';
       genericSoundRef.current.currentTime = 0;
-      genericSoundRef.current.play().catch(() => {});
+      genericSoundRef.current.play().catch(() => { });
     };
 
     try {
@@ -105,7 +136,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         // Prefer dedicated refs when known
         if (name === 'bell.mp3' && bellSoundRef.current) {
           bellSoundRef.current.currentTime = 0;
-          bellSoundRef.current.play().catch(() => {});
+          bellSoundRef.current.play().catch(() => { });
           return;
         }
         // Fallback generic element for arbitrary files
@@ -115,7 +146,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         const url = `/assets/sounds/${name}`;
         genericSoundRef.current.src = url;
         genericSoundRef.current.currentTime = 0;
-        genericSoundRef.current.play().catch(() => {});
+        genericSoundRef.current.play().catch(() => { });
       });
     } catch (e) {
       console.error("Socket initialization failed:", e);

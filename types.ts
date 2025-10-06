@@ -13,6 +13,11 @@ export interface Player {
   score: number;
   hasStarOfHope?: boolean;
   speedUpAnswer?: string;
+  // ISO timestamp when player submitted Speed Up answer
+  speedUpAnswerAt?: string;
+  obstacleAnswer?: string;
+  // ISO timestamp when player submitted Obstacle answer
+  obstacleAnswerAt?: string;
 }
 
 export interface GameState {
@@ -34,6 +39,9 @@ export interface GameState {
   // Speed Up round state
   showSpeedUpAnswers: boolean;
 
+  // Obstacle round state
+  showPlayerAnswers: boolean;
+
   // Finish round state
   finishQuestionType: '20đ' | '30đ';
 }
@@ -41,6 +49,7 @@ export interface GameState {
 // Question types
 export interface WarmUpQuestion {
   question: string;
+  options?: string[];
 }
 
 export interface ObstacleData {

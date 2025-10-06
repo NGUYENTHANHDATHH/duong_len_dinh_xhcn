@@ -41,7 +41,7 @@ app.get('/health', (req, res) => {
 
 // API endpoint for game status
 app.get('/api/status', (req, res) => {
-  res.json({ 
+  res.json({
     gameState: gameState,
     isConnected: true,
     players: gameState.players.length
@@ -65,6 +65,7 @@ const defaultState = {
   revealedClues: [false, false, false, false],
   revealedAnswers: [false, false, false, false],
   showSpeedUpAnswers: false,
+  showPlayerAnswers: false,
   finishQuestionType: '20p',
 };
 
@@ -102,6 +103,7 @@ function saveState() {
       revealedClues: gameState.revealedClues,
       revealedAnswers: gameState.revealedAnswers,
       showSpeedUpAnswers: gameState.showSpeedUpAnswers,
+      showPlayerAnswers: gameState.showPlayerAnswers,
       activePlayerId: gameState.activePlayerId,
       finishQuestionType: gameState.finishQuestionType,
     };
@@ -146,14 +148,28 @@ io.on('connection', (socket) => {
     } catch (e) { console.error('buzz Error:', e); }
   });
 
-  socket.on('submitSpeedUpAnswer', ({ playerId, answer }) => {
+  socket.on('submitSpeedUpAnswer', ({ playerId, answer, submittedAt }) => {
     try {
       const player = gameState.players.find(p => p.id === playerId);
       if (player) {
         player.speedUpAnswer = answer;
+        // store ISO timestamp of submission for auditing/sorting
+        player.speedUpAnswerAt = submittedAt || new Date().toISOString();
         broadcastState();
       }
     } catch (e) { console.error('submitSpeedUpAnswer Error:', e); }
+  });
+
+  socket.on('submitObstacleAnswer', ({ playerId, answer, submittedAt }) => {
+    try {
+      const player = gameState.players.find(p => p.id === playerId);
+      if (player) {
+        player.obstacleAnswer = answer;
+        // store ISO timestamp of submission for auditing/sorting
+        player.obstacleAnswerAt = submittedAt || new Date().toISOString();
+        broadcastState();
+      }
+    } catch (e) { console.error('submitObstacleAnswer Error:', e); }
   });
 
   socket.on('toggleStarOfHope', ({ playerId }) => {
@@ -208,6 +224,7 @@ io.on('connection', (socket) => {
       gameState.revealedClues = [false, false, false, false];
       gameState.revealedAnswers = [false, false, false, false];
       gameState.showSpeedUpAnswers = false;
+      gameState.showPlayerAnswers = false;
 
       // Reset question indices to -1 to show intro screen on the frontend
       gameState.currentEasyQuestion = -1;
@@ -215,6 +232,9 @@ io.on('connection', (socket) => {
 
       gameState.players.forEach(p => {
         p.speedUpAnswer = '';
+        p.speedUpAnswerAt = undefined;
+        p.obstacleAnswer = '';
+        p.obstacleAnswerAt = undefined;
         p.hasStarOfHope = false;
       });
       if (timerInterval) clearInterval(timerInterval);
@@ -317,10 +337,28 @@ io.on('connection', (socket) => {
     } catch (e) { console.error('revealAnswers Error:', e); }
   });
 
+  socket.on('showPlayerAnswers', () => {
+    try {
+      gameState.showPlayerAnswers = true;
+      broadcastState();
+    } catch (e) { console.error('showPlayerAnswers Error:', e); }
+  });
+
+  socket.on('hidePlayerAnswers', () => {
+    try {
+      gameState.showPlayerAnswers = false;
+      broadcastState();
+    } catch (e) { console.error('hidePlayerAnswers Error:', e); }
+  });
+
   socket.on('showObstacle', () => {
     try {
       if (gameState.currentRound === ROUNDS.OBSTACLE) {
         gameState.currentEasyQuestion = 0; // Move from intro (-1) to main content (0)
+        // Clear all obstacle answers when showing obstacle (new clue set)
+        gameState.players.forEach(p => {
+          p.obstacleAnswer = '';
+        });
         broadcastState();
       }
     } catch (e) { console.error('showObstacle Error:', e); }

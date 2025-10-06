@@ -41,8 +41,30 @@ const PlayerCard: React.FC<{
   isBuzzerWinner: boolean,
   isActivePlayer: boolean,
   currentRound: Round,
-  showSpeedUpAnswers: boolean
-}> = React.memo(({ player, isBuzzerWinner, isActivePlayer, currentRound, showSpeedUpAnswers }) => {
+  showSpeedUpAnswers: boolean,
+  showPlayerAnswers: boolean
+}> = React.memo(({ player, isBuzzerWinner, isActivePlayer, currentRound, showSpeedUpAnswers, showPlayerAnswers }) => {
+  const formatVNTime = (iso?: string) => {
+    if (!iso) return '';
+    try {
+      const date = new Date(iso);
+      const formatted = new Intl.DateTimeFormat('vi-VN', {
+        timeZone: 'Asia/Ho_Chi_Minh',
+        hour12: false,
+
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      }).format(date);
+
+      // Lấy mili-giây và pad cho đủ 3 chữ số
+      const ms = String(date.getMilliseconds()).padStart(3, '0');
+
+      return `${formatted},${ms}`;
+    } catch {
+      return '';
+    }
+  };
   return (
     <div className={`p-3 rounded-lg transition-all duration-300 ${isBuzzerWinner ? 'bg-yellow-500 text-black scale-105 shadow-lg' : 'bg-gray-800 bg-opacity-40'} ${isActivePlayer ? 'border-2 border-red-300' : 'border-2 border-yellow-200 shadow-[0_0_15px_rgba(255,255,0,0.6)] bg-black bg-opacity-50'}`}>
       <div className="flex justify-between items-center">
@@ -50,7 +72,10 @@ const PlayerCard: React.FC<{
         <span className="font-bold text-2xl">{player.score}</span>
       </div>
       {currentRound === Round.SPEED_UP && showSpeedUpAnswers && (
-        <p className="text-sm mt-1 bg-gray-700 p-2 rounded">Answer: {player.speedUpAnswer || ''}</p>
+        <p className="text-lg mt-1 bg-gray-700 p-2 rounded">Answer: {player.speedUpAnswer || ''}{player.speedUpAnswerAt ? ` — ${formatVNTime(player.speedUpAnswerAt)}` : ''}</p>
+      )}
+      {currentRound === Round.OBSTACLE && showPlayerAnswers && player.obstacleAnswer && (
+        <p className="text-lg mt-1 bg-gray-700 p-2 rounded">Answer: {player.obstacleAnswer}{player.obstacleAnswerAt ? ` — ${formatVNTime(player.obstacleAnswerAt)}` : ''}</p>
       )}
     </div>
   );
@@ -103,16 +128,16 @@ const RoundDisplay: React.FC<{
     if (video) {
       return (
         <div className="relative w-full max-w-4xl aspect-video overflow-hidden">
-    <video
-        src={video.src}
-        title={video.title}
-        className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
-        frameBorder="0"
-        allow="autoplay; encrypted-media; fullscreen"
-        allowFullScreen
-        controls
-    />
-</div>
+          <video
+            src={video.src}
+            title={video.title}
+            className="absolute top-1/2 left-1/2 min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
+            frameBorder="0"
+            allow="autoplay; encrypted-media; fullscreen"
+            allowFullScreen
+            controls
+          />
+        </div>
       );
     }
     return null;
@@ -140,6 +165,15 @@ const RoundDisplay: React.FC<{
       return (
         <div>
           <p className="text-3xl bg-gray-700 p-6 rounded-lg">{question.question}</p>
+          {question.options && question.options.length > 0 ? (
+            <div className="space-y-3 mt-4">
+              {question.options.map((option, index) => (
+                <p key={index} className="text-xl pl-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors duration-200">
+                  {option}
+                </p>
+              ))}
+            </div>
+          ) : null}
         </div>
       );
     }
@@ -147,14 +181,14 @@ const RoundDisplay: React.FC<{
       const data = questions.ChuongNgaiVat;
       return (
         <div className="text-center">
-          <h2 className="text-4xl font-bold mb-4 uppercase">Keyword has {data.keyword.length} letters</h2>
+          <h2 className="text-4xl font-bold mb-4 uppercase">Từ khóa cần tìm gồm 4 chữ</h2>
           <div className="relative mb-4">
-    <img src={data.img} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
-    {/* 2x2 numbered black boxes overlay; hide each when its clue is revealed */}
-    <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
-        <div className="w-full max-w-2xl h-full grid grid-cols-4 grid-rows-2"> {/* Đảm bảo grid này bao phủ hoàn hảo ảnh */}
-            {data.clues.slice(0, 8).map((_, i) => (
-                <div
+            <img src={"/assets/imgs/obstacle.png"} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
+            {/* 2x2 numbered black boxes overlay; hide each when its clue is revealed */}
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
+              <div className="w-full max-w-2xl h-full grid grid-cols-4 grid-rows-2"> {/* Đảm bảo grid này bao phủ hoàn hảo ảnh */}
+                {data.clues.slice(0, 8).map((_, i) => (
+                  <div
                     key={i}
                     className={`
                         flex items-center justify-center
@@ -162,13 +196,13 @@ const RoundDisplay: React.FC<{
                         transition-opacity duration-300 ease-in-out
                         ${gameState.revealedAnswers[i] ? 'opacity-0' : 'opacity-100'}
                     `}
-                >
+                  >
                     {i + 1}
-                </div>
-            ))}
-        </div>
-    </div>
-</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
             {data.clues.map((clue, index) => (
               <div key={index} className={`p-4 rounded-lg transition-colors duration-300 ${gameState.revealedClues[index] ? 'bg-blue-800' : 'bg-gray-700'}`}>
@@ -214,7 +248,7 @@ const RoundDisplay: React.FC<{
           <h3 className="text-2xl font-bold mb-4">Player: <span className="text-yellow-400">{activePlayer.name}</span></h3>
           <p className="text-3xl bg-gray-700 p-6 rounded-lg">
             <span className={`font-bold ${gameState.finishQuestionType === 'easy' ? 'text-green-400' : 'text-red-400'}`}>
-              {gameState.finishQuestionType.toUpperCase()}:
+
             </span>
             {" "}{question.question}
           </p>
@@ -232,6 +266,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   const navigate = useNavigate();
   const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null);
   const [speedUpAnswer, setSpeedUpAnswer] = useState('');
+  const [obstacleAnswer, setObstacleAnswer] = useState('');
 
   useEffect(() => {
     if (isPlayerView) {
@@ -263,6 +298,23 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
     }
   }, [gameState?.currentEasyQuestion, gameState?.currentRound]);
 
+  // Clear local obstacle answer input when the Obstacle round changes or when obstacle answers are cleared
+  useEffect(() => {
+    if (gameState?.currentRound === Round.OBSTACLE) {
+      setObstacleAnswer('');
+    }
+  }, [gameState?.currentRound]);
+
+  // Clear local obstacle answer input when server clears obstacle answers (showObstacle called)
+  useEffect(() => {
+    if (gameState?.currentRound === Round.OBSTACLE && currentPlayer) {
+      const playerInState = gameState.players.find(p => p.id === currentPlayer.id);
+      if (playerInState && !playerInState.obstacleAnswer) {
+        setObstacleAnswer('');
+      }
+    }
+  }, [gameState?.players, currentPlayer, gameState?.currentRound]);
+
   if (!gameState || !questions) {
     return <div className="flex items-center justify-center min-h-screen text-2xl">Connecting to the game...</div>;
   }
@@ -284,7 +336,11 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   const handleSubmitAnswer = () => {
     if (currentPlayer) {
       try {
-        socket.submitSpeedUpAnswer(currentPlayer.id, speedUpAnswer);
+        if (currentRound === Round.SPEED_UP) {
+          socket.submitSpeedUpAnswer(currentPlayer.id, speedUpAnswer);
+        } else if (currentRound === Round.OBSTACLE) {
+          socket.submitObstacleAnswer(currentPlayer.id, obstacleAnswer);
+        }
         // Don't clear answer here, let it be controlled by server state if needed
         // setSpeedUpAnswer(''); 
       } catch (error) {
@@ -294,9 +350,9 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/imgs/bg_sys.png')" }}>
+    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/imgs/bg.jpg')" }}>
       {/* Main Content */}
-      <main className="flex-grow-[3] p-4 md:p-8 flex flex-col" >
+      <main className="flex-grow-[3] max-w-[calc(100vh+400px)] p-4 md:p-8 flex flex-col" >
         <header className={`p-4 rounded-t-xl text-center ${ROUND_COLORS[currentRound]}`}>
           <h1 className="text-3xl font-bold">{currentRound}</h1>
         </header>
@@ -319,12 +375,12 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
                 <i className="fas fa-bell mr-2"></i>BẤM CHUÔNG
               </button>
             )}
-            {currentRound === Round.SPEED_UP && !gameState.showSpeedUpAnswers && (
+            {(currentRound === Round.OBSTACLE || currentRound === Round.SPEED_UP) && gameState.currentEasyQuestion >= 0 && (
               <div className="w-full max-w-xl flex gap-2">
                 <input
                   type="text"
-                  value={speedUpAnswer}
-                  onChange={(e) => setSpeedUpAnswer(e.target.value)}
+                  value={currentRound === Round.OBSTACLE ? obstacleAnswer : speedUpAnswer}
+                  onChange={(e) => currentRound === Round.OBSTACLE ? setObstacleAnswer(e.target.value) : setSpeedUpAnswer(e.target.value)}
                   onKeyUp={(e) => e.key === 'Enter' && handleSubmitAnswer()}
                   placeholder="Type your answer and press Enter"
                   className="flex-grow bg-gray-700 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -337,6 +393,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
                 </button>
               </div>
             )}
+
           </div>
         )}
       </main>
@@ -357,6 +414,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
                 isActivePlayer={isActivePlayer}
                 currentRound={currentRound}
                 showSpeedUpAnswers={gameState.showSpeedUpAnswers}
+                showPlayerAnswers={gameState.showPlayerAnswers}
               />
             })}
           </div>

@@ -1,11 +1,5 @@
 {
-  "players": [
-    {
-      "id": "1759170117895-0.5256387759662485",
-      "name": "abc",
-      "score": 0
-    }
-  ],
+  "players": [],
   "isGameStarted": true,
   "currentRound": "LOBBY",
   "currentEasyQuestion": -1,

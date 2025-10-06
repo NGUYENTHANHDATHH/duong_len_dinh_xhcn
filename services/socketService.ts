@@ -7,9 +7,9 @@ class SocketService {
 
   constructor() {
     // Use environment variable for server URL, fallback to localhost for development
-    const serverUrl = (import.meta as any).env?.VITE_SERVER_URL || 
-      ((import.meta as any).env?.DEV ? 'http://localhost:3001' : 'https://duong-len-dinh-xhcn.onrender.com');
-    
+    const serverUrl = (import.meta as any).env?.VITE_SERVER_URL ||
+      ((import.meta as any).env?.DEV ? 'http://localhost:3001' : 'https://htttql-t56.onrender.com');
+
     // Explicitly connect to the backend server, defining transports
     this.socket = io(serverUrl, {
       transports: ['websocket', 'polling'],
@@ -47,7 +47,13 @@ class SocketService {
   }
 
   submitSpeedUpAnswer(playerId: string, answer: string) {
-    this.socket.emit('submitSpeedUpAnswer', { playerId, answer });
+    const submittedAt = new Date().toISOString();
+    this.socket.emit('submitSpeedUpAnswer', { playerId, answer, submittedAt });
+  }
+
+  submitObstacleAnswer(playerId: string, answer: string) {
+    const submittedAt = new Date().toISOString();
+    this.socket.emit('submitObstacleAnswer', { playerId, answer, submittedAt });
   }
 
   toggleStarOfHope(playerId: string) {
@@ -65,6 +71,8 @@ class SocketService {
   revealClue(index: number) { this.socket.emit('revealClue', { index }); }
   revealAnswer(index: number) { this.socket.emit('revealAnswer', { index }); }
   revealAnswers() { this.socket.emit('revealAnswers'); }
+  showPlayerAnswers() { this.socket.emit('showPlayerAnswers'); }
+  hidePlayerAnswers() { this.socket.emit('hidePlayerAnswers'); }
   showObstacle() { this.socket.emit('showObstacle'); }
   hideObstacle() { this.socket.emit('hideObstacle'); }
   updateScore(playerId: string, delta: number) { this.socket.emit('updateScore', { playerId, delta }); }
