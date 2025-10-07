@@ -1,290 +1,260 @@
 {
   "KhoiDong": [
     {
-      "question": "Ba chức năng chính của logistics trong thương mại điện tử là gì?",
+      "question": "Đại hội đại biểu toàn quốc lần thứ XII họp trong khoảng thời gian nào?",
       "options": []
     },
     {
-      "question": "Báo cáo chỉ ra thách thức nào liên quan đến nguồn nhân lực cho thương mại điện tử tại Việt Nam?",
+      "question": "Chủ trương của Hội nghị Trung Ương 4 khóa XII (10/2016) bao gồm: \"Thực hiện hiệu quả tiến trình hội nhập kinh tế quốc tế, giữ vững ổn định ______ trong bối cảnh nước ta tham gia các hiệp định thương mại tự do thế hệ mới\"",
+      "options": []
+    },
+    {
+      "question": "Đại hội XII nêu nhiệm vụ tổng quát phát triển đất nước 5 năm 2016 - 2020gồm có: “Hoàn thiện thể chế, phát triển kinh tế thị trường….?”",
       "options": [
-        "A. Nhân lực chỉ cần giỏi về kinh doanh, không cần kiến thức công nghệ.",
-        "B. Nguồn nhân lực nhìn chung vẫn còn thiếu về số lượng và yếu về chất lượng chuyên môn.",
-        "C. Thời gian đào tạo nhân lực cho TMĐT rất ngắn và đơn giản.",
-        "D. Nguồn nhân lực dồi dào và có trình độ chuyên môn cao."
+        "Định hướng xã hội chủ nghĩa",
+        "Định hướng công nghiệp hóa",
+        "Định hướng hiện đại hóa",
+        "Định hướng công nghiệp hóa, hiện đại hóa"
       ]
     },
     {
-      "question": "Báo cáo đã chỉ ra hạn chế lớn nhất của mô hình \"cửa hàng ảo\" (virtual store) là gì?",
+      "question": "Đại hội XII đã bầu ai là Tổng bí thư của Đảng?",
+      "options": []
+    },
+    {
+      "question": "Phương châm chỉ đạo của Đại hội XII của Đảng?",
       "options": [
-        "A. Không thể phục vụ khách hàng trên phạm vi toàn cầu.",
-        "B. Chỉ hoạt động trong giờ hành chính và khó quản lý.",
-        "C. Chi phí thuê mặt bằng ảo rất cao.",
-        "D. Yêu cầu chi phí công nghệ ban đầu cao và khách hàng không thể trải nghiệm sản phẩm trực tiếp."
+        "Đoàn kết - Dân chủ - Kỷ cương - Đổi mới",
+        "Đoàn kết – Dân chủ – Kỷ cương – Sáng tạo – Phát triển",
+        "Dân giàu – Nước mạnh – Công bằng – Văn minh",
+        "Đoàn kết – Dân chủ – Công bằng – Văn minh"
       ]
     },
     {
-      "question": "Chữ ký số được xác minh là hợp lệ khi nào?",
+      "question": "Đại hội XIII của Đảng đã bầu Ủy viên chính thức Ban Chấp hành Trungương Đảng khóa XIII gồm bao nhiêu đồng chí?",
       "options": []
     },
     {
-      "question": "Chức năng bảo mật nào của chữ ký số đảm bảo thông điệp do đúng chủ thể gửi đi?",
+      "question": "Để thực hiện thành công các mục tiêu cụ thể và các chỉ tiêu 5 năm 2021 -2025, Đại hội XIII đã nêu bao nhiêu nhiệm vụ trọng tâm?",
       "options": []
     },
     {
-      "question": "Chức năng bảo mật nào của chữ ký số giúp phát hiện mọi thay đổi trong văn bản?",
+      "question": "Theo ba đột phá chiến lược trong nhiệm kỳ Đại hội XIII thì trước hết nên hoàn thiện thể chế kinh tế nào?",
       "options": []
     },
     {
-      "question": "Chức năng bảo mật nào của chữ ký số khiến người ký không thể phủ nhận việc đã ký vào văn bản?",
-      "options": []
-    },
-    {
-      "question": "Đâu là một trong những lợi ích chính của thương mại điện tử đối với doanh nghiệp khi so sánh với mô hình kinh doanh truyền thống?",
+      "question": "Hội nghị Trung ương 4 khóa XII (10/2016) đã ra nghị quyết về vấn đề gì?",
       "options": [
-        "A. Tăng đáng kể chi phí quảng cáo và tiếp thị.",
-        "B. Giới hạn tệp khách hàng trong một khu vực địa lý nhất định.",
-        "C. Tối ưu hóa chi phí vận hành nhờ giảm thiểu chi phí mặt bằng và nhân sự.",
-        "D. Bắt buộc phải xây dựng nhiều cửa hàng vật lý để hỗ trợ."
+        "Tăng cường xây dựng, chỉnh đốn Đảng",
+        "Đẩy mạnh công nghiệp hóa, hiện đại hóa nông nghiệp",
+        "Xây dựng Chiến lược biển Việt Nam"
       ]
     },
     {
-      "question": "Để TMĐT thành công, báo cáo nhấn mạnh cần đảm bảo mấy yếu tố cốt lõi?",
+      "question": "Mục tiêu cụ thể phát triển đất nước trong giai đoạn tới được Đại hội XIII xác định làm bao nhiêu giai đoạn?",
       "options": []
     },
     {
-      "question": "Đối với các sản phẩm số hóa (phim, nhạc, phần mềm), lợi ích nổi bật của thương mại điện tử là gì?",
+      "question": "Đại hội XIII của Đảng xác định mục tiêu tổng quát đến giữa thế kỷ XXI Việt Nam sẽ trở thành nước như thế nào?",
       "options": []
     },
     {
-      "question": "Đối với người tiêu dùng, lợi ích lớn nhất của thương mại điện tử về mặt thời gian và không gian là gì?",
-      "options": []
-    },
-    {
-      "question": "Giao thức bảo mật nào là tiêu chuẩn bắt buộc cho mọi website thương mại điện tử để bảo vệ thông điệp truyền tải?",
-      "options": []
-    },
-    {
-      "question": "Hình thức lừa đảo trực tuyến bằng cách gửi email giả mạo để lấy thông tin nhạy cảm của người dùng được gọi là gì?",
-      "options": []
-    },
-    {
-      "question": "Hoạt động đầu tiên trong chu trình thương mại điện tử là gì?",
-      "options": []
-    },
-    {
-      "question": "Hoạt động nào được coi là trung tâm của thương mại điện tử, bao gồm việc trưng bày, đàm phán và chốt đơn hàng?",
-      "options": []
-    },
-    {
-      "question": "Trong quy trình xác minh chữ ký số, người nhận sử dụng \"khóa công khai\" (public key) của người gửi để làm gì?",
+      "question": "Nghị quyết số 05-NQ/TW (1/11/2016) của Trung ương khóa XII đề cập đến vấn đề gì?",
       "options": [
-        "A. Để tạo ra một bản tóm lược dữ liệu (message digest) mới từ văn bản nhận được.",
-        "B. Để mã hóa văn bản gốc nhằm tăng cường bảo mật.",
-        "C. Để giải mã chữ ký số và thu lại bản tóm lược dữ liệu ban đầu.",
-        "D. Để gửi lại một chữ ký xác nhận cho người gửi."
+        "Đổi mới mô hình tăng trưởng",
+        "Phát triển kinh tế tư nhân",
+        "Chiến lược biển Việt Nam",
+        "Cải cách chính sách tiền lương"
       ]
     },
     {
-      "question": "Hoạt động nào là cầu nối trực tiếp giữa doanh nghiệp và khách hàng, ảnh hưởng lớn đến trải nghiệm mua sắm?",
+      "question": "Đại hội XIII của Đảng đánh giá tổng quát bao nhiêu năm kể từ khi thực hiện Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội?",
       "options": []
     },
     {
-      "question": "Lợi ích nào của cửa hàng ảo giúp doanh nghiệp thu thập thông tin về lượt ghé thăm, sản phẩm được xem nhiều để điều chỉnh chiến lược?",
-      "options": []
-    },
-    {
-      "question": "Lợi ích nào của thương mại điện tử giúp doanh nghiệp vượt qua rào cản về vị trí địa lý?",
-      "options": []
-    },
-    {
-      "question": "Mô hình giao dịch TMĐT giữa các doanh nghiệp với nhau, thường có quy mô lớn và giá trị cao, được gọi là _____.",
-      "options": []
-    },
-    {
-      "question": "Mô hình giao dịch TMĐT trong đó doanh nghiệp bán hàng trực tuyến cho người tiêu dùng cuối cùng được gọi là gì?",
-      "options": []
-    },
-    {
-      "question": "Mô hình giao dịch trực tuyến giữa cá nhân với cơ quan nhà nước, nền tảng của chính phủ điện tử, được gọi là gì?",
-      "options": []
-    },
-    {
-      "question": "Mô hình thương mại điện tử B2C (Business to Customer) được mô tả trong báo cáo là gì?",
+      "question": "Một trong những kinh nghiệm rút ra từ Đại hội XII là gì?",
       "options": [
-        "A. Giao dịch trực tuyến giữa các cá nhân với nhau, ví dụ như trên các chợ đồ cũ.",
-        "B. Giao dịch trong đó doanh nghiệp bán hàng hóa hoặc dịch vụ trực tiếp cho người tiêu dùng cuối cùng.",
-        "C. Giao dịch giữa các doanh nghiệp, chẳng hạn như nhà sản xuất bán hàng cho nhà phân phối.",
-        "D. Giao dịch giữa doanh nghiệp và các cơ quan chính phủ, như nộp thuế trực tuyến."
+        "Nhìn thẳng vào sự thật, đánh giá đúng sự thật",
+        "Tập trung phát triển công nghiệp nặng trước hết",
+        "Ưu tiên mở rộng quan hệ với các nước lớn",
+        "Xây dựng nông thôn mới là then chốt"
       ]
     },
     {
-      "question": "Một trong những đặc trưng nổi bật của thương mại điện tử là khả năng hoạt động liên tục, được gọi là _____.",
-      "options": []
-    },
-    {
-      "question": "Một trong những hạn chế của thanh toán điện tử là sự phụ thuộc vào _____ ổn định và hệ thống máy chủ hoạt động liên tục.",
-      "options": []
-    },
-    {
-      "question": "Một trong những hạn chế lớn nhất của cửa hàng ảo là gì?",
-      "options": []
-    },
-    {
-      "question": "Một trong những lợi ích của thanh toán điện tử đối với ngân hàng và các tổ chức tài chính được đề cập là gì?",
+      "question": "Đại hội XIII xác định động lực và nguồn lực phát triển quan trọng của đất nước thời gian tới là:",
       "options": [
-        "A. Làm giảm mức độ cạnh tranh giữa các ngân hàng.",
-        "B. Gia tăng chi phí in ấn và quản lý tiền mặt.",
-        "C. Giảm chi phí vận hành nhờ tự động hóa và mở rộng phạm vi phục vụ khách hàng.",
-        "D. Hạn chế sự đa dạng của các sản phẩm và dịch vụ tài chính."
+        "Tất cả các ý trên",
+        "Kết hợp sức mạnh dân tộc với sức mạnh thời đại",
+        "Phát huy sức mạnh tổng hợp của cả hệ thống chính trị và nền văn hoá, con người Việt Nam",
+        "Khơi dậy mạnh mẽ tinh thần yêu nước, ý chí tự cường dân tộc."
       ]
     },
     {
-      "question": "Một trong những ưu điểm của cửa hàng ảo đối với doanh nghiệp là tiết kiệm chi phí do không cần _____.",
+      "question": "Đại hội XIII có định hướng về tăng cường đoàn kết dân tộc, thực hiện _____ giữa các vùng miền",
       "options": []
     },
     {
-      "question": "Nền tảng của chữ ký điện tử gồm hai thành phần quan trọng nào?",
+      "question": "Tính đến Đại hội lần thứ XII (2016), công cuộc Đổi mới do Đảng khởi xướng và lãnh đạo đã tiến hành được bao nhiêu năm?",
       "options": []
     },
     {
-      "question": "Nguồn nhân lực cho ngành thương mại điện tử cần có kiến thức rộng trong những lĩnh vực nào?",
-      "options": []
-    },
-    {
-      "question": "So với cửa hàng ảo, rào cản chính khi kinh doanh trên sàn TMĐT như Shopee, Lazada là gì?",
-      "options": []
-    },
-    {
-      "question": "So với sàn TMĐT truyền thống, trải nghiệm tại cửa hàng ảo có đặc điểm gì khác biệt?",
-      "options": []
-    },
-    {
-      "question": "Tài liệu điện tử do tổ chức cung cấp dịch vụ chứng thực chữ ký số (CA) cấp, chứa thông tin của chủ thể và khóa công khai, được gọi là gì?",
-      "options": []
-    },
-    {
-      "question": "Tại sao trải nghiệm mua sắm trong cửa hàng ảo vẫn chưa thể thay thế hoàn toàn trải nghiệm thực tế?",
-      "options": []
-    },
-    {
-      "question": "Thanh toán điện tử giúp ngân hàng giảm chi phí vận hành thông qua việc _____ quy trình giao dịch.",
-      "options": []
-    },
-    {
-      "question": "Theo báo cáo, cơ chế hoạt động của chữ ký số kết hợp hai thành phần công nghệ nào để đảm bảo tính xác thực và toàn vẹn?",
+      "question": "Theo Hội nghị Trung ương 4 khóa XII, đâu là trọng tâm của hội nhập quốc tế?",
       "options": [
-        "A. Mật mã khóa công khai và hàm băm mật mã.",
-        "B. Trí tuệ nhân tạo (AI) và chuỗi khối (Blockchain).",
-        "C. Sinh trắc học và mã QR.",
-        "D. Giao thức HTTPS và tường lửa."
+        "Hội nhập kinh tế quốc tế.",
+        "Hội nhập văn hóa và xã hội.",
+        "Hội nhập khoa học và công nghệ.",
+        "Hội nhập giáo dục và đào tạo."
       ]
     },
     {
-      "question": "Theo báo cáo, sự kiện nào được coi là khởi đầu cho quá trình hình thành và phát triển của thương mại điện tử tại Việt Nam?",
+      "question": "Theo Hội nghị Trung ương 6 khóa XII, công tác bảo vệ, chăm sóc và nâng cao sức khỏe là nghĩa vụ và trách nhiệm của mỗi người dân, cả hệ thống _______ và toàn xã hội.?",
+      "options": []
+    },
+    {
+      "question": "Theo Hội nghị Trung ương 7 khóa XII, cải cách chính sách tiền lương phải tuân thủ nguyên tắc phân phối theo lao động và quy luật ______ của kinh tế thị trường.",
+      "options": []
+    },
+    {
+      "question": "Nghị quyết số 36-NQ/TW ngày 22/10/2018 của Hội nghị Trung ương 8 khóa XII nói về vấn đề gì?",
       "options": [
-        "A. Luật Giao dịch Điện tử được ban hành.",
-        "B. Sự xuất hiện của Internet tại Việt Nam vào năm 1997.",
-        "C. Sự ra đời của các sàn thương mại điện tử lớn như Shopee, Lazada.",
-        "D. Đại dịch Covid-19 bùng phát trên toàn cầu."
+        "Chiến lược phát triển bền vững kinh tế biển Việt Nam đến năm 2030, tầm nhìn đến năm 2045.",
+        "Chiến lược bảo vệ rừng và môi trường đến năm 2030, tầm nhìn đến năm 2045.",
+        "Chiến lược phát triển nông nghiệp đến năm 2030, tầm nhìn đến năm 2045.",
+        "Chiến lược phát triển du lịch đến năm 2030, tầm nhìn đến năm 2045."
       ]
     },
     {
-      "question": "Theo báo cáo, vai trò của hoạt động logistics điện tử (e-logistics) trong thương mại điện tử là gì?",
+      "question": "Theo Hội nghị Trung ương 5 khóa XII, kinh tế tư nhân được coi là một động lực quan trọng để phát triển ______?",
+      "options": []
+    },
+    {
+      "question": "Nguyên TBT Nguyễn Phú Trọng được bầu cử làm Tổng Bí thư qua mấy kỳ Đại hội liên tiếp?",
+      "options": []
+    },
+    {
+      "question": "Địa điểm Đại hội XIII?",
+      "options": []
+    },
+    {
+      "question": "Một trong những quan điểm chỉ đạo của Đại hội XIII là kết hợp sức mạnh dân tộc với sức mạnh gì?",
+      "options": []
+    },
+    {
+      "question": "Trong quan điểm chỉ đạo của Đại hội XIII, nguồn lực nội sinh nào được coi là quan trọng nhất?",
+      "options": []
+    },
+    {
+      "question": "Đại hội XIII đặt ra mục tiêu phấn đấu đến giữa thế kỷ XXI, nước ta sẽ trở thành:",
       "options": [
-        "A. Chỉ tập trung vào việc quảng bá sản phẩm trên các nền tảng số.",
-        "B. Là cầu nối trực tiếp giữa doanh nghiệp và khách hàng, bao gồm quản lý kho, xử lý đơn hàng và vận chuyển.",
-        "C. Xây dựng và duy trì trang web thương mại điện tử.",
-        "D. Giải quyết các vấn đề liên quan đến thanh toán điện tử và bảo mật giao dịch."
+        "Nước phát triển, theo định hướng xã hội chủ nghĩa",
+        "Nước đang phát triển, có thu nhập cao",
+        "Nước đang phát triển, theo định hướng xã hội chủ nghĩa",
+        "Nước phát triển, có thu nhập trung bình"
       ]
     },
     {
-      "question": "Theo dự báo, thị trường thương mại điện tử Việt Nam sẽ vượt mốc bao nhiêu tỷ USD vào năm 2025?",
-      "options": []
-    },
-    {
-      "question": "Theo tài liệu, yếu tố nào KHÔNG được liệt kê là một trong những yếu tố cốt lõi đảm bảo thành công của thương mại điện tử?",
+      "question": "Nhiệm vụ nào được coi là then chốt theo quan điểm chỉ đạo của Đại hội XIII?",
       "options": [
-        "A. Cơ sở hạ tầng công nghệ và hệ thống thanh toán điện tử.",
-        "B. Quản lý logistics và nguồn nhân lực chất lượng cao.",
-        "C. Sự có mặt của nhiều cửa hàng bán lẻ vật lý.",
-        "D. An toàn bảo mật thông tin và môi trường pháp lý."
+        "Xây dựng Đảng",
+        "Phát triển kinh tế - xã hội",
+        "Phát triển văn hóa",
+        "Bảo đảm quốc phòng, an ninh"
       ]
     },
     {
-      "question": "Theo thống kê, ngành nào chiếm tỷ lệ các cuộc tấn công mạng cao nhất với 32,4%?",
+      "question": "Đâu KHÔNG phải là vị trí, vai trò của biển được nêu ra tại Hội nghị Trung ương 8 khóa XII?",
+      "options": [
+        "Vùng đặc quyền kinh tế của Việt Nam",
+        "Bộ phận cấu thành chủ quyền thiêng liêng của Tổ quốc",
+        "Không gian sinh tồn, gắn bó mật thiết với sự nghiệp xây dựng và bảo vệ Tổ quốc",
+        "Cửa ngõ giao lưu quốc tế"
+      ]
+    },
+    {
+      "question": "Mục tiêu, phương hướng đến năm 2030 tại Đại hội XIII là kỷ niệm dấu mốc lịch sử nào?",
       "options": []
     },
     {
-      "question": "Trong hệ thống chữ ký số, khóa nào được chủ sở hữu giữ bí mật và dùng để tạo chữ ký?",
+      "question": "Đại hội XIII đã chỉ ra mấy đột phá chiến lược?",
       "options": []
     },
     {
-      "question": "Trong hệ thống chữ ký số, khóa nào được công bố rộng rãi và dùng để xác minh chữ ký?",
+      "question": "Theo Đại hội XIII của Đảng, mục tiêu xây dựng Quân đội nhân dân, Công an nhân dân cách mạng, chính quy, tinh nhuệ, hiện đại được xác định phấn đấu hoàn thành vào năm nào?",
       "options": []
     },
     {
-      "question": "Trong quá trình tạo chữ ký số, bản tóm lược dữ liệu (digest) được mã hóa bằng gì để tạo ra chữ ký số?",
+      "question": "Việc phát triển hạ tầng thông tin, viễn thông trong đột phá chiến lược tại Đại hội XIII nhằm mục đích gì?",
+      "options": [
+        "Tạo nền tảng chuyển đổi số quốc gia, từng bước phát triển kinh tế số, xã hội số.",
+        "Nâng cao chất lượng dịch vụ viễn thông.",
+        "Phục vụ cho công tác quản lý của Nhà nước.",
+        "Đẩy mạnh hợp tác quốc tế trong lĩnh vực công nghệ."
+      ]
+    },
+    {
+      "question": "Đến năm 2025, Việt Nam có các hoạt động kỷ niệm: __ năm ngày thành lập Đảng, ___ năm Ngày Giải Phóng Miền Nam thống nhất đất nước; Ngày Quốc tế Lao động; ___ năm ngày sinh Chủ tịch Hồ Chí Minh; kỷ niệm Chiến thắng Điện Biên Phủ, 80 năm ngày Cách mạng Tháng Tám thành công và Quốc khánh Nước Cộng hòa xã hội chủ nghĩa Việt Nam",
       "options": []
     },
     {
-      "question": "Trong quá trình tạo chữ ký số, bước đầu tiên là xử lý văn bản qua hàm băm để tạo ra một chuỗi giá trị gọi là _____.",
+      "question": "Địa điểm Đại hội XII?",
       "options": []
     },
     {
-      "question": "Trong quá trình xác minh chữ ký số, người nhận dùng khóa nào để giải mã chữ ký số?",
+      "question": "Theo Hội nghị Trung ương 5 khóa XII đã ra Nghị quyếtsố 10-NQ/TW với quan điểm chỉ đạo: “Phát triển kinh tế tư nhân lành mạnh theo cơ chế thị trường là một…”",
+      "options": [
+        "Yêu cầu chủ quan",
+        "Yêu cầu vừa khách quan, vừa chủ quan",
+        "Yêu cầu khách quan, vừa cấp thiết, vừa lâu dài",
+        "Yêu cầu khách quan và quan trọng"
+      ]
+    },
+    {
+      "question": "Có bao nhiêu quan điểm chỉ đạo của Đảng được nêu trong Báo cáo chính trị tại Đại hội XIII?",
       "options": []
     },
     {
-      "question": "Trong thương mại điện tử, hệ thống nào đóng vai trò là mắt xích quan trọng kết nối đầu cuối trong chuỗi cung ứng?",
+      "question": "Mục tiêu cụ thể phát triển đất nước: “Là nước đang phát triển, có công nghiệp hiện đại, thu nhập trung bình cao” được Đại hội XIII xác định trong giai đoạn tới nào?",
       "options": []
     },
     {
-      "question": "Ưu điểm của cửa hàng ảo đối với khách hàng là cho phép 'thử' sản phẩm (quần áo, nội thất) thông qua công nghệ _____ trước khi mua.",
-      "options": []
-    },
-    {
-      "question": "Xu hướng thanh toán cho phép người dùng mua hàng trực tuyến và trả góp linh hoạt được gọi là gì?",
-      "options": []
-    },
-    {
-      "question": "Yếu tố nào trong cơ sở hạ tầng công nghệ giúp các giao dịch TMĐT diễn ra thông suốt, nhanh chóng?",
+      "question": "Đại hội XIII có định hướng về tăng cường đoàn kết dân tộc, thực hiện _____ giữa các vùng miền",
       "options": []
     }
   ],
   "ChuongNgaiVat": {
-    "keyword": "AN TOÀN THÔNG TIN",
+    "keyword": "HỘI NHẬP QUỐC TẾ",
     "clues": [
       {
-        "question": "Công nghệ mã hóa phổ biến trong chữ ký số, sử dụng cặp khóa công khai và khóa bí mật để bảo mật dữ liệu.",
-        "answer": "RSA"
+        "question": "Hội nghị Trung ương 4 khóa XII (10/2016) đã chủ trương thực hiện hiệu quả tiến trình hội nhập kinh tế gì?",
+        "answer": "Kinh tế quốc tế"
       },
       {
-        "question": "Đây là giao thức chuẩn bắt buộc cho các website TMĐT, giúp mã hóa dữ liệu trao đổi giữa máy khách và máy chủ.",
-        "answer": "HTTPS"
+        "question": "Theo Hội nghị Trung ương 4 khóa XII, trọng tâm của hội nhập quốc tế là gì?",
+        "answer": "Hội nhập kinh tế quốc tế"
       },
       {
-        "question": "Kỹ thuật tạo ra một chuỗi giá trị cố định đại diện duy nhất cho dữ liệu, đảm bảo phát hiện mọi thay đổi.",
-        "answer": "Hash"
+        "question": "Theo Hội nghị Trung ương 4 khóa XII, ai là lực lượng đi đầu trong sự nghiệp hội nhập kinh tế quốc tế gồm doanh nhân, đội ngũ _____",
+        "answer": "trí thức"
       },
       {
-        "question": "Loại chữ ký được pháp luật Việt Nam công nhận, giúp xác thực danh tính và đảm bảo tính toàn vẹn dữ liệu.",
-        "answer": "Digital Signature"
+        "question": "Quan điểm chỉ đạo của Đại hội XIII là kết hợp sức mạnh dân tộc với sức mạnh gì?",
+        "answer": "Sức mạnh thời đại"
       },
       {
-        "question": "Phương thức xác thực hiện đại, yêu cầu ít nhất hai lớp bảo mật như mật khẩu + OTP hoặc vân tay.",
-        "answer": "MFA"
+        "question": "Trong bối cảnh hội nhập, Đại hội XII nêu nhiệm vụ hoàn thiện thể chế kinh tế gì?",
+        "answer": "Kinh tế thị trường"
       },
       {
-        "question": "Hình thức tấn công mạng phổ biến, kẻ xấu giả mạo email, website để đánh cắp thông tin cá nhân.",
-        "answer": "Phishing"
+        "question": "Việc giữ vững ổn định trong bối cảnh nước ta tham gia các hiệp định thương mại tự do thể hệ mới là chủ trương của Hội nghị Trung ương mấy?",
+        "answer": "bốn"
       },
       {
-        "question": "Hệ thống bảo vệ mạng nội bộ khỏi truy cập trái phép, được ví như “bức tường” chắn tin tặc.",
-        "answer": "Firewall"
+        "question": "Việc phát triển kinh tế tư nhân lành mạnh theo cơ chế thị trường là một yêu cầu gì theo Nghị quyết số 10-NQ/TW?",
+        "answer": "khách quan"
       },
       {
-        "question": "Loại phần mềm độc hại có thể lây lan qua email, cửa sổ chat, gây nguy hiểm cho hệ thống TMĐT.",
-        "answer": "Virus"
+        "question": "Việc 'Thực hiện hiệu quả tiến trình hội nhập kinh tế quốc tế' là chủ trương của Hội nghị Trung ương khóa nào?",
+        "answer": "XII"
       }
     ]
   },
@@ -311,66 +281,84 @@
   "VeDich": {
     "20p": [
       {
-        "question": "Thương mại điện tử (eCommerce) là sự mua bán sản phẩm hay dịch vụ trên các hệ thống điện tử như __________ và các mạng máy tính"
+        "question": "Đại hội XIII đã nêu mấy nhiệm vụ trọng tâm trong nhiệm kỳ Đại hội?"
       },
       {
-        "question": "Trí tuệ nhân tạo (AI) đóng vai trò trung tâm trong quá trình chuyển đổi thương mại điện tử, đặc biệt đối với trải nghiệm và hành vi của đối tượng nào?"
+        "question": "Đại hội XIII đã chỉ ra được bao nhiêu đột phá chiến lược?"
       },
       {
-        "question": "Để đảm bảo tính xác thực và chống phủ nhận trong giao dịch TMĐT, người ký sử dụng yếu tố nào để mã hóa bản tóm lược dữ liệu (digest)?"
+        "question": "\"Xây dựng tổ chức bộ máy của toàn hệ thống chính trị tinh gọn, hoạt động hiệu lực, hiệu quả; đẩy mạnh đấu tranh phòng, chống tham nhũng, lãng phí, quan liêu\" Là nhiệm vụ của Đại hội nào?"
       },
       {
-        "question": "Phân tích lợi ích chi phí, việc đầu tư vào hạ tầng máy móc nào sẽ thay thế đáng kể chi phí cao của việc thuê hoặc mua bất động sản cho cửa hàng vật lý?"
+        "question": "Theo quan điểm phát triển được Đại hội XII nêu ra, “phát huy dân chủ xã hội chủ nghĩa” phải đi đôi với:"
       },
       {
-        "question": "Mô hình không gian mua sắm số hóa được xây dựng bằng công nghệ thực tế ảo (VR), thực tế tăng cường (AR) hoặc 3D web interactive được gọi là gì?"
+        "question": "Dự Đại hội XIII có bao nhiêu đại biểu?"
       },
       {
-        "question": "Trong thương mại điện tử, hệ thống nào đóng vai trò là mắt xích quan trọng kết nối đầu cuối trong chuỗi cung ứng?"
+        "question": "Dự Đại hội XII có bao nhiêu đại biểu?"
       },
       {
-        "question": "Ưu điểm của cửa hàng ảo đối với khách hàng là cho phép 'thử' sản phẩm (quần áo, nội thất) thông qua công nghệ _____ trước khi mua."
+        "question": "Một thành tự rất quan trọng của công cuộc đổi mới là \"Giáo dục và_______, khoa học và công nghê tiếp tục được đổi mới và phát triển\""
       },
       {
-        "question": "Xu hướng thanh toán cho phép người dùng mua hàng trực tuyến và trả góp linh hoạt được gọi là gì?"
+        "question": "Đại hội XIII của Đảng đánh giá tổng quát bao nhiêu năm thực hiện kể từ khi thực hiện công cuộc đổi mới ?"
       },
       {
-        "question": "Yếu tố nào trong cơ sở hạ tầng công nghệ giúp các giao dịch TMĐT diễn ra thông suốt, nhanh chóng?"
+        "question": "Nghị quyết Đại hội XIII của Đảng định hướng chỉ tiêu tỷ lệ che phủ rừng đến năm 2025 là bao nhiêu %?"
       },
       {
-        "question": "Logistics trong TMĐT đảm nhiệm việc vận chuyển, lưu kho và xử lý gì?"
+        "question": "Bầu ban chấp hành Trung ương khóa XII gồm ___ủy viên Trung ương chính thức, ___ ủy viên dự khuyết; Bộ chính trị có ___ đồng chí, đồng chí Nguyễn Phú Trọng được bầu làm lại___ của Đảng"
       },
       {
-        "question": "Một trong những lợi ích lớn của mô hình TMĐT là giúp doanh nghiệp mở rộng _____ nhờ công cụ tìm kiếm toàn cầu."
+        "question": "“Nền kinh tế thị trường định đướng xã hội chủ nghĩa tiếp tục phát triển” là một trong những nội dung  đánh giá tổng quát kết quả thực hiện Nghị quyết Đại hội lần thứ bao nhiêu của Đảng?"
       }
     ],
     "30p": [
       {
-        "question": "Một trong những thách thức lớn của thương mại điện tử Việt Nam là nguồn nhân lực _____, hạ tầng kỹ thuật chưa đồng bộ và niềm tin người tiêu dùng chưa cao."
+        "question": "Đều nhận diện những khủng hoảng, suy thoái (khủng hoảng kinh tế-xã hội ở Đại hội VI và suy thoái tư tưởng chính trị, đạo đức ở Đại hội XII), điểm chung trong việc xác định nhiệm vụ cấp bách của công tác xây dựng Đảng là gì?"
       },
       {
-        "question": "Làm thế nào thương mại điện tử giúp người tiêu dùng mua được sản phẩm với giá thấp hơn?"
+        "question": "Điểm tương đồng về bối cảnh tình hình thế giới và khu vực đang diễn biến như thế nào khi Đảng tiến hành Đại hội VII (1991) và Đại hội XIII (2021)?"
       },
       {
-        "question": "Tiêu chuẩn Giao dịch Điện tử An toàn (SET) do hai tổ chức nào phối hợp ban hành?"
+        "question": "So với Đại hội XII, Đại hội XIII đã có bước phát triển mới trong việc xây dựng Đảng, thể hiện rõ nhất ở điểm nào?"
       },
       {
-        "question": "Tại Việt Nam, phương thức thanh toán qua thẻ nào chiếm ưu thế trong các giao dịch trực tuyến?"
+        "question": "Trong cách tiếp cận của Đảng đối với kinh tế tư nhân sau Đại hội XII, điểm mới nào được thể hiện qua Nghị quyết số 10-NQ/TW khác biệt so với các giai đoạn trước?"
       },
       {
-        "question": "Theo báo cáo ebi 2025, hơn 70% giao dịch TMĐT tại Việt Nam được thực hiện qua hai hình thức nào?"
+        "question": "Trong các bài học kinh nghiệm được rút ra sau 5 năm thực hiện Nghị quyết Đại hội XI (2011-2015) tại Đại hội XII, Đảng đã nhấn mạnh sự cần thiết phải đánh giá đúng điều gì để kịp thời xác định, điều chỉnh chủ trương, nhiệm vụ, giải pháp phù hợp?"
       },
       {
-        "question": "Tập đoàn nào đã tạo ra siêu thị ảo tại ga tàu điện ngầm ở Hàn Quốc vào năm 2011, cho phép khách hàng quét mã QR để mua hàng?"
+        "question": "Đảng nhấn mạnh việc phát triển _____ phải gắn kết chặt chẽ và đồng bộ với giải quyết các vấn đề _____, bảo đảm quốc phòng, an ninh, coi đây là các mặt cấu thành của sự phát triển bền vững.trong bối cảnh Đại hội XII và XIII?"
       },
       {
-        "question": "Một trong những hạn chế lớn nhất của cửa hàng ảo là gì?"
+        "question": "Trong văn kiện Đại hội XIII (2021), luận điểm “kết hợp sức mạnh dân tộc với sức mạnh thời đại” được thể hiện rằng phải phát huy cao độ ____, tinh thần ____, tự cường và các yếu tố khác"
       },
       {
-        "question": "Lợi ích nào của cửa hàng ảo giúp doanh nghiệp thu thập thông tin về lượt ghé thăm, sản phẩm được xem nhiều để điều chỉnh chiến lược?"
+        "question": "Trong các nguy cơ mà Đảng ta đã chỉ ra tại Đại hội XII thì nguy cơ nào là lớn nhất trong giai đoạn 5 năm 2016- 2020?"
       },
       {
-        "question": "Cửa hàng ảo mang lại ưu điểm về phân tích dữ liệu hành vi khách hàng, nhưng lại có nhược điểm lớn về chi phí ban đầu do yêu cầu loại hạ tầng nào?"
+        "question": "Theo Nghị quyết Đại hội đại biểu toàn quốc lần thứ XIII của Đảng cộng sản Việt Nam: \"Trong bối cảnh tình hình ___ có nhiều biến động nhanh, phức tạp ___ của Đảng tiếp tục là ngọn cờ tư tưởng, ngọn cờ chiến đấu, ngọn cờ quy tụ sức mạnh đại đoàn kết toàn dân tộc phấn đấu vì một nước Việt Nam dân giàu, nước mạnh, dân chủ, công bằng, văn minh.\""
+      },
+      {
+        "question": "Đại hội đại biểu toàn quốc lần thứ XIII của Đảng xác định mục tiêu phát triển đất nước: Đến năm 2025 là nước đang phát triển, có công nghiệp theo hướng hiện đại, vượt qua mức thu nhập______. Đến năm 2030 là nước đang phát triển, có công nghiệp hiện đại, thu nhập ______ . Đến năm 2045 trở thành nước phát triển, thu nhập ______"
+      },
+      {
+        "question": "Một trong các giải pháp đột phá của công tác xây dựng Đảng nhiệm kỳ Đại hội XIII là: \"Kiên quyết đấu tranh phòng, chống _____, lãng phí, tiêu cực, quan liêu; đẩy mạnh phân cấp, phân quyền đi đôi với tăng cường _____, giám sát và kiểm soát chặt chẽ quyền lực.\""
+      },
+      {
+        "question": "Văn kiện Đại hội XIII định hướng bảo vệ Tổ quốc giai đoạn 2021-2030 như thế nào?"
+      },
+      {
+        "question": "Tiêu đề của Báo cáo chính trị tại Đại hội XII của Đảng viết: “Tăng cường xây dựng Đảng trong sạch, vững mạnh; phát huy sức mạnh toàn dân tộc, dân chủ xã hội chủ nghĩa; đẩy mạnh toàn diện, đồng bộ công cuộc đổi mới; bảo vệ vững chắc Tổ quốc, giữ vững môi trường hòa bình, ổn định; phấn đấu sớm đưa nước ta cơ bản trở thành nước _______”."
+      },
+      {
+        "question": "Một trong những nhiệm vụ trọng tâm trong nhiệm kỳ Đại hội XIII của Đảng là: “Tiếp tục đẩy mạnh đấu tranh phòng, chống ________, tham nhũng, lãng phí, tiêu cực, \"lợi ích nhóm\", những biểu hiện \"tự diễn biến\", \"tự chuyển hóa\" trong nội bộ. Xây dựng đội ngũ đảng viên và cán bộ các cấp, nhất là cấp ________, người đứng đầu đủ phẩm chất, năng lực, uy tín, ngang tầm nhiệm vụ. Củng cố lòng tin, sự gắn bó của nhân dân với Đảng, Nhà nước, chế độ xã hội chủ nghĩa”. Hãy điền vào chỗ trống trên."
+      },
+      {
+        "question": "Sau 5 năm thực hiện thực hiện Nghị quyết Đại hội XI của Đảng, một trong một số kinh nghiệm Đại hội XII rút ra là: Chủ động, tích cực hội nhập quốc tế trên cơ cở giữ vững độc lập, tự chủ, đáp ứng yêu cầu của sự nghiệp xây dựng và bảo vệ Tổ quốc trong tình hình mới. Trong đó lấy điều gì làm mục tiêu cao nhất?"
       }
     ]
   }

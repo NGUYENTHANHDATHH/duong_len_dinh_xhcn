@@ -183,7 +183,7 @@ const RoundDisplay: React.FC<{
         <div className="text-center">
           <h2 className="text-4xl font-bold mb-4 uppercase">Từ khóa cần tìm gồm 4 chữ</h2>
           <div className="relative mb-4">
-            <img src={"/assets/imgs/obstacle.png"} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
+            <img src={"/assets/imgs/obstacle.jpg"} alt="Obstacle" className="w-full max-w-2xl mx-auto rounded-lg shadow-lg" />
             {/* 2x2 numbered black boxes overlay; hide each when its clue is revealed */}
             <div className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none">
               <div className="w-full max-w-2xl h-full grid grid-cols-4 grid-rows-2"> {/* Đảm bảo grid này bao phủ hoàn hảo ảnh */}
@@ -350,7 +350,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/imgs/bg.jpg')" }}>
+    <div className="flex flex-col lg:flex-row min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/imgs/bg_sys.png')" }}>
       {/* Main Content */}
       <main className="flex-grow-[3] max-w-[calc(100vh+400px)] p-4 md:p-8 flex flex-col" >
         <header className={`p-4 rounded-t-xl text-center ${ROUND_COLORS[currentRound]}`}>
