@@ -75,7 +75,7 @@ const PlayerCard: React.FC<{
         <p className="text-lg mt-1 bg-gray-700 p-2 rounded">Answer: {player.speedUpAnswer || ''}{player.speedUpAnswerAt ? ` — ${formatVNTime(player.speedUpAnswerAt)}` : ''}</p>
       )}
       {currentRound === Round.OBSTACLE && showPlayerAnswers && player.obstacleAnswer && (
-        <p className="text-lg mt-1 bg-gray-700 p-2 rounded">Answer: {player.obstacleAnswer}{player.obstacleAnswerAt ? ` — ${formatVNTime(player.obstacleAnswerAt)}` : ''}</p>
+        <p className="text-lg mt-1 bg-gray-700 p-2 rounded">Answer: {player.obstacleAnswer}</p>
       )}
     </div>
   );
@@ -226,9 +226,10 @@ const RoundDisplay: React.FC<{
       return (
         <div className="w-full max-w-4xl text-center">
           <h2 className="text-4xl font-bold mb-4">Speed Up!</h2>
-          <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 Aspect Ratio */ }}>
-            <VideoFrame key={video.video} src={video.video} />
-          </div>
+          <p>Nhập đáp án phía dưới</p>
+          <p>|</p>
+          <p>|</p>
+          <p>V</p>
         </div>
       );
     }
@@ -334,6 +335,7 @@ const GameScreen: React.FC<GameScreenProps> = ({ isPlayerView }) => {
   };
 
   const handleSubmitAnswer = () => {
+    alert('Gửi đáp án thành công!');
     if (currentPlayer) {
       try {
         if (currentRound === Round.SPEED_UP) {
