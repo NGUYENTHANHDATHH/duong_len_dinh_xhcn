@@ -110,7 +110,8 @@ const AdminDashboard: React.FC = () => {
             <div className="flex flex-wrap gap-2">
               <button key={5} onClick={() => { socket.startTimer(5); socket.playSound('countdown_5s.mp3'); }} className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md font-semibold">5s</button>
               <button key={15} onClick={() => { socket.startTimer(15); socket.playSound('countdown_15s.mp3'); }} className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md font-semibold">15s</button>
-              <button key={15} onClick={() => { socket.startTimer(20); socket.playSound('countdown_20s.mp3'); }} className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md font-semibold">20s</button>
+              <button key={20} onClick={() => { socket.startTimer(20); socket.playSound('countdown_20s.mp3'); }} className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md font-semibold">20s</button>
+              <button key={60} onClick={() => { socket.startTimer(60); socket.playSound('countdown_20s.mp3'); }} className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md font-semibold">60s</button>
               <button key={120} onClick={() => { socket.startTimer(120); socket.playSound('countdown_120s.mp3'); }} className="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md font-semibold">120s</button>
             </div>
             <p className="mt-4 text-2xl font-mono">Time Left: {gameState.timer}s</p>
